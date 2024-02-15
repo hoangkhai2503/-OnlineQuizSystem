@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.2</version>
+		<version>3.1.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.manager</groupId>
+	<groupId>com.example</groupId>
 	<artifactId>OnlineQuizSystem</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>OnlineQuizSystem</name>
-	<description>Demo project for Spring Boot</description>
+	<description>OnlineQuizSystem</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -43,11 +43,23 @@
 		</dependency>
 	</dependencies>
 
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<image>
+						<builder>paketobuildpacks/builder-jammy-base:latest</builder>
+					</image>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
