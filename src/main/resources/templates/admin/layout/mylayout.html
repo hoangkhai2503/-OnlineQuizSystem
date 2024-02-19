@@ -37,7 +37,8 @@
 						<li class="nav-item dropdown notification">
 							<a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown"
 								aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span
-									class="indicator"></span></a>						</li>
+									class="indicator"></span></a>
+						</li>
 						<li class="nav-item dropdown connection">
 							<a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
 								aria-haspopup="true" aria-expanded="false"> <i class="fas fa-fw fa-th"></i> </a>
@@ -45,15 +46,18 @@
 						<li class="nav-item dropdown nav-user">
 							<a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2"
 								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
-									src="https://i.pinimg.com/564x/09/21/fc/0921fc87aa989330b8d403014bf4f340.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+									src="https://i.pinimg.com/564x/09/21/fc/0921fc87aa989330b8d403014bf4f340.jpg" alt=""
+									class="user-avatar-md rounded-circle"></a>
 							<div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
 								aria-labelledby="navbarDropdownMenuLink2">
 								<div class="nav-user-info">
 									<h5 class="mb-0 text-white nav-user-name">Name Admin </h5>
 									<span class="status"></span><span class="ml-2">Chuc Vu</span>
 								</div>
-								<a class="dropdown-item" th:href="@{/admin/profile}"><i class="fas fa-user mr-2"></i>Account</a>
-								<a class="dropdown-item" th:href="@{/admin/login}"><i class="fas fa-power-off mr-2"></i>Logout</a>
+								<a class="dropdown-item" th:href="@{/admin/profile}"><i
+										class="fas fa-user mr-2"></i>Account</a>
+								<a class="dropdown-item" th:href="@{/admin/login}"><i
+										class="fas fa-power-off mr-2"></i>Logout</a>
 							</div>
 						</li>
 					</ul>
@@ -139,29 +143,39 @@
 										class="fab fa-fw fa-wpforms"></i>Forms</a>
 								<div id="submenu-10" class="collapse submenu" style="">
 									<ul class="nav flex-column">
-										
 										<li class="nav-item">
 											<a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
-												data-target="#submenu-11" aria-controls="submenu-11">Add</a>
+												data-target="#submenu-11" aria-controls="submenu-11">Add - Admin</a>
 											<div id="submenu-11" class="collapse submenu" style="">
 												<ul class="nav flex-column">
 													<li class="nav-item">
-														<a class="nav-link" href="#">Level 1</a>
+														<a class="nav-link" th:href="@{/admin/addClass}">formClass</a>
 													</li>
 													<li class="nav-item">
-														<a class="nav-link" href="#">Level 2</a>
+														<a class="nav-link"
+															th:href="@{/admin/addTeacher}">formTeacher</a>
+													</li>
+													<li class="nav-item">
+														<a class="nav-link"
+															th:href="@{/admin/addSubject}">formSubject</a>
+													</li>
+													<li class="nav-item">
+														<a class="nav-link"
+															th:href="@{/admin/addStudent}">formStudent</a>
+													</li>
+													<li class="nav-item">
+														<a class="nav-link"
+															th:href="@{/admin/addTerm}">formTerm</a>
 													</li>
 												</ul>
 											</div>
 										</li>
 										<li class="nav-item">
 											<a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
-												data-target="#submenu-12" aria-controls="submenu-12">Edit</a>
+												data-target="#submenu-12" aria-controls="submenu-12">Add - Teacher</a>
 											<div id="submenu-12" class="collapse submenu" style="">
 												<ul class="nav flex-column">
-													<li class="nav-item">
-														<a class="nav-link" href="#">Level 1</a>
-													</li>
+
 													<li class="nav-item">
 														<a class="nav-link" href="#">Level 2</a>
 													</li>
@@ -171,7 +185,6 @@
 									</ul>
 								</div>
 							</li>
-							
 							<li class="nav-item">
 								<a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
 									data-target="#submenu-5" aria-controls="submenu-5"><i
@@ -179,10 +192,19 @@
 								<div id="submenu-5" class="collapse submenu" style="">
 									<ul class="nav flex-column">
 										<li class="nav-item">
-											<a class="nav-link" href="pages/general-table.html">Tables 1</a>
+											<a class="nav-link" th:href="@{/admin/term}">Term</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="pages/data-tables.html">Tables 2</a>
+											<a class="nav-link" th:href="@{/admin/class}">Class</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" th:href="@{/admin/teacher}">Teacher</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" th:href="@{/admin/subject}">Subject</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" th:href="@{/admin/subject}">Student</a>
 										</li>
 									</ul>
 								</div>
@@ -196,7 +218,7 @@
 									Pages </a>
 								<div id="submenu-6" class="collapse submenu" style="">
 									<ul class="nav flex-column">
-										
+
 										<li class="nav-item">
 											<a class="nav-link" th:href="@{/admin/login}">Login</a>
 										</li>
@@ -232,7 +254,7 @@
 										class="badge badge-secondary">New</span></a>
 								<div id="submenu-7" class="collapse submenu" style="">
 									<ul class="nav flex-column">
-										
+
 										<li class="nav-item">
 											<a class="nav-link" href="pages/email-compose.html">Email Compose</a>
 										</li>
@@ -272,7 +294,7 @@
 									</ul>
 								</div>
 							</li>
-							
+
 						</ul>
 					</div>
 				</nav>
@@ -295,8 +317,7 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-							Copyright © 2018 Concept. All rights reserved. Dashboard by <a
-								href="https://colorlib.com/wp/">Colorlib</a>.
+							Copyright © 2024 TEAM. All rights reserved. Dashboard by <a href="#">AKTTH</a>.
 						</div>
 						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
 							<div class="text-md-right footer-links d-none d-sm-block">
