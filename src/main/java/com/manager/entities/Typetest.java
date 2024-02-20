@@ -21,14 +21,30 @@ public class Typetest implements java.io.Serializable{
 	    @Column(name = "time")
 	    private String time;
 
-	    @Column(name = "quantityQuestion")
+	    @Column(name = "quantity_question")
 	    private Integer quantityQuestion;
 
-	    @Column(name = "scoreFactor")
+	    @Column(name = "score_factor")
 	    private Integer scoreFactor;
 	    
-	    @Column(name = "statusId")
-	    private Integer statusId;
+	    @ManyToOne
+	    @JoinColumn(name = "status_id_typetest")
+	    private EnumList enumList;
+
+		public Typetest(Integer id, String name, String time, Integer quantityQuestion, Integer scoreFactor,
+				EnumList enumList) {
+			super();
+			this.id = id;
+			this.name = name;
+			this.time = time;
+			this.quantityQuestion = quantityQuestion;
+			this.scoreFactor = scoreFactor;
+			this.enumList = enumList;
+		}
+
+		public Typetest() {
+			super();
+		}
 
 		public Integer getId() {
 			return id;
@@ -54,44 +70,29 @@ public class Typetest implements java.io.Serializable{
 			this.time = time;
 		}
 
-		public int getQuantityQuestion() {
+		public Integer getQuantityQuestion() {
 			return quantityQuestion;
 		}
 
-		public void setQuantityQuestion(int quantityQuestion) {
+		public void setQuantityQuestion(Integer quantityQuestion) {
 			this.quantityQuestion = quantityQuestion;
 		}
 
-		public int getScoreFactor() {
+		public Integer getScoreFactor() {
 			return scoreFactor;
 		}
 
-		public void setScoreFactor(int scoreFactor) {
+		public void setScoreFactor(Integer scoreFactor) {
 			this.scoreFactor = scoreFactor;
 		}
 
-		public int getStatusId() {
-			return statusId;
+		public EnumList getEnumList() {
+			return enumList;
 		}
 
-		public void setStatusId(int statusId) {
-			this.statusId = statusId;
+		public void setEnumList(EnumList enumList) {
+			this.enumList = enumList;
 		}
 
-		public Typetest(Integer id, String name, String time, int quantityQuestion, int scoreFactor, int statusId) {
-			super();
-			this.id = id;
-			this.name = name;
-			this.time = time;
-			this.quantityQuestion = quantityQuestion;
-			this.scoreFactor = scoreFactor;
-			this.statusId = statusId;
-		}
-
-		public Typetest() {
-			super();
-		}
-	    
-	    
 	    
 }

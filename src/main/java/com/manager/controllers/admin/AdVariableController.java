@@ -7,15 +7,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.manager.service.EnumListService;
+import com.manager.service.VariableService;
 
 @Controller
 @RequestMapping({ "admin" })
 public class AdVariableController {
 	@Autowired
 	private EnumListService enumlistService;
+	
+	@Autowired
+	private VariableService variableService;
 	// getList
 	@RequestMapping(value = { "variable" }, method = RequestMethod.GET)
-	public String TableVariable() {
+	public String TableVariable(ModelMap modelMap) {
+		modelMap.put("variables", variableService.findAll());
 		return "admin/table/variable";
 	}
 

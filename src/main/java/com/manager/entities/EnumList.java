@@ -24,17 +24,21 @@ public class EnumList implements java.io.Serializable{
 	    @Column(name = "typestatus")
 	    private String typestatus;
 
-	    
-		public EnumList() {
-			super();
-		}
+	    //typetest
+	    @OneToMany(mappedBy = "enumList")
+	    private Set<Typetest> typetest = new HashSet<Typetest>();
 
-		public EnumList(Integer id, String name, String status, String typestatus) {
+		public EnumList(Integer id, String name, String status, String typestatus, Set<Typetest> typetest) {
 			super();
 			this.id = id;
 			this.name = name;
 			this.status = status;
 			this.typestatus = typestatus;
+			this.typetest = typetest;
+		}
+
+		public EnumList() {
+			super();
 		}
 
 		public Integer getId() {
@@ -68,5 +72,14 @@ public class EnumList implements java.io.Serializable{
 		public void setTypestatus(String typestatus) {
 			this.typestatus = typestatus;
 		}
-   
+
+		public Set<Typetest> getTypetest() {
+			return typetest;
+		}
+
+		public void setTypetest(Set<Typetest> typetest) {
+			this.typetest = typetest;
+		}
+	    
+		
 }

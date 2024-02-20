@@ -48,15 +48,17 @@
 											<th>Name</th>
 											<th>Image</th>
 											<th>Code</th>
+											<th>Status</th>
 											<th>Action</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="variable: ${variables}">
-											<td th:text="${variable.id}"></td>
-											<td th:text="${variable.name}"></td>
-											<td th:text="${variable.image}"></td>
-											<td th:text="${variable.code}"></td>
+										<tr th:each="typetest: ${typetests}">
+											<td th:text="${typetest.id}"></td>
+											<td th:text="${typetest.name}"></td>
+											<td th:text="${typetest.time}"></td>
+											<td th:text="${typetest.quantityQuestion}"></td>
+											<td th:text="${typetest.enumList.name}"></td>
 											<td>Edit | Delete</td>
 										</tr>
 										
@@ -67,6 +69,7 @@
 											<th>Name</th>
 											<th>Image</th>
 											<th>Code</th>
+											<th>Status</th>
 											<th>Action</th>
 										</tr>
 									</tfoot>
