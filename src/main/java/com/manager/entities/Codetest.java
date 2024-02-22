@@ -12,14 +12,15 @@ import jakarta.persistence.*;
 public class Codetest implements java.io.Serializable{
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    @Column(name = "id")
-	    private Integer id;
+	    @Column(name = "id_codetest ")
+	    private Integer id_codetest ;
 
-	    @Column(name = "name")
-	    private String name;
+	    @Column(name = "name_codetest")
+	    private String name_codetest;
 
-	    @Column(name = "statusId")
-	    private Integer statusId;
+	    @ManyToOne
+	    @JoinColumn(name = "status_id_codetest")
+	    private EnumList enumList;
 	    
 	    
 		public Codetest() {
@@ -27,41 +28,42 @@ public class Codetest implements java.io.Serializable{
 		}
 
 
-		public Codetest(Integer id, String name, Integer statusId) {
+		public Codetest(Integer id_codetest, String name_codetest, EnumList enumList) {
 			super();
-			this.id = id;
-			this.name = name;
-			this.statusId = statusId;
+			this.id_codetest = id_codetest;
+			this.name_codetest = name_codetest;
+			this.enumList = enumList;
 		}
 
 
-		public Integer getId() {
-			return id;
+		public Integer getId_codetest() {
+			return id_codetest;
 		}
 
 
-		public void setId(Integer id) {
-			this.id = id;
+		public void setId_codetest(Integer id_codetest) {
+			this.id_codetest = id_codetest;
 		}
 
 
-		public String getName() {
-			return name;
+		public String getName_codetest() {
+			return name_codetest;
 		}
 
 
-		public void setName(String name) {
-			this.name = name;
+		public void setName_codetest(String name_codetest) {
+			this.name_codetest = name_codetest;
 		}
 
 
-		public Integer getStatusId() {
-			return statusId;
+		public EnumList getEnumList() {
+			return enumList;
 		}
 
 
-		public void setStatusId(Integer statusId) {
-			this.statusId = statusId;
+		public void setEnumList(EnumList enumList) {
+			this.enumList = enumList;
 		}
 
+		
 }

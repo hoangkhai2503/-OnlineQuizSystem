@@ -39,6 +39,30 @@
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="card">
 						<h5 class="card-header">Class Table</h5>
+						<br>
+						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+							<input class="btn btn-primary" type="submit" value=" Add New "></input>
+
+							<input class="btn btn-primary" type="submit" value=" Filter "
+								style="margin-left: 20px;float:right"></input>
+
+							<select style="margin-left: 20px;padding:
+								 12px; border-color: gainsboro;border-radius: 5px;float:right;width: 200px;">
+								<option>Volvo</option>
+								<option>Saab</option>
+								<option>Mercedes</option>
+								<option>Audi</option>
+							</select>
+							<input type="text" placeholder="Seach..." style="margin-left: 20px;padding:
+								 8px; border-color: gainsboro;border-radius: 5px;float:right">
+
+							<input type="text" placeholder="Seach..." style="margin-left: 20px;padding:
+								 8px; border-color: gainsboro;border-radius: 5px;float:right">
+
+							<input type="text" placeholder="Seach..." style="margin-left: 20px;padding:
+								 8px; border-color: gainsboro;border-radius: 5px;float:right">
+
+						</div>
 						<div class="card-body">
 							<div class="table-responsive">
 								<table class="table table-striped table-bordered first">
@@ -53,15 +77,18 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>Tiger Nixon</td>
-											<td>System Architect</td>
-											<td>Edinburgh</td>
-											<td>61</td>
-											<td>2011/04/25</td>
-											<td>$320,800</td>
+										<tr th:each="gbclass: ${gbclass}">
+											<td th:text="${gbclass.id_class}"></td>
+											<td th:text="${gbclass.name_class}"></td>
+											<td th:text="${gbclass.enumList.name}"></td>
+											<td th:text="${gbclass.teacher.fullname_teacher}"></td>
+											<td
+												th:text="${#dates.format(gbclass.modified_class, 'dd-MM-yyyy')}">
+											</td>
+
+											<td>Edit | Delete</td>
 										</tr>
-										
+
 									</tbody>
 									<tfoot>
 										<tr>
@@ -82,7 +109,7 @@
 				<!-- end basic table  -->
 				<!-- ============================================================== -->
 			</div>
-			
+
 		</div>
 		<!-- ============================================================== -->
 	</div>

@@ -12,75 +12,77 @@ import jakarta.persistence.*;
 public class ClassDetail implements java.io.Serializable{
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    @Column(name = "id")
-	    private Integer id;
+	    @Column(name = "id_classdetail")
+	    private Integer id_classdetail;
 
-	    @Column(name = "classId")
-	    private Integer classId;
+	    @ManyToOne
+	    @JoinColumn(name = "class_id_classdetail")
+	    private Class gbclass;
 
-	    @Column(name = "studentId")
-	    private Integer studentId;
+	    @ManyToOne
+	    @JoinColumn(name = "student_id_classdetail")
+	    private Student student;
 	    
-	    @Column(name = "teacherId")
-	    private Integer teacherId;
+	    @ManyToOne
+	    @JoinColumn(name = "teacher_id_classdetail")
+	    private Teacher teacher;
 	    
-	    @Column(name = "subjectId")
-	    private Integer subjectId;
-	    
-	    @Column(name = "statusId")
-	    private Integer statusId;
+	    @ManyToOne
+	    @JoinColumn(name = "status_id_classdetail")
+	    private EnumList enumList;
 	    
 		public ClassDetail() {
 			super();
 		}
 
-		public ClassDetail(Integer id, Integer classId, Integer studentId, Integer teacherId, Integer statusId) {
+		public ClassDetail(Integer id_classdetail, Class gbclass, Student student, Teacher teacher, EnumList enumList) {
 			super();
-			this.id = id;
-			this.classId = classId;
-			this.studentId = studentId;
-			this.teacherId = teacherId;
-			this.statusId = statusId;
+			this.id_classdetail = id_classdetail;
+			this.gbclass = gbclass;
+			this.student = student;
+			this.teacher = teacher;
+			this.enumList = enumList;
 		}
 
-		public Integer getId() {
-			return id;
+		public Integer getId_classdetail() {
+			return id_classdetail;
 		}
 
-		public void setId(Integer id) {
-			this.id = id;
+		public void setId_classdetail(Integer id_classdetail) {
+			this.id_classdetail = id_classdetail;
 		}
 
-		public Integer getClassId() {
-			return classId;
+		public Class getGbclass() {
+			return gbclass;
 		}
 
-		public void setClassId(Integer classId) {
-			this.classId = classId;
+		public void setGbclass(Class gbclass) {
+			this.gbclass = gbclass;
 		}
 
-		public Integer getStudentId() {
-			return studentId;
+		public Student getStudent() {
+			return student;
 		}
 
-		public void setStudentId(Integer studentId) {
-			this.studentId = studentId;
+		public void setStudent(Student student) {
+			this.student = student;
 		}
 
-		public Integer getTeacherId() {
-			return teacherId;
+		public Teacher getTeacher() {
+			return teacher;
 		}
 
-		public void setTeacherId(Integer teacherId) {
-			this.teacherId = teacherId;
+		public void setTeacher(Teacher teacher) {
+			this.teacher = teacher;
 		}
 
-		public Integer getStatusId() {
-			return statusId;
+		public EnumList getEnumList() {
+			return enumList;
 		}
 
-		public void setStatusId(Integer statusId) {
-			this.statusId = statusId;
+		public void setEnumList(EnumList enumList) {
+			this.enumList = enumList;
 		}
 
+		
 }

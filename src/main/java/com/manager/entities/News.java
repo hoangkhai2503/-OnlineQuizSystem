@@ -12,99 +12,99 @@ import jakarta.persistence.*;
 public class News implements java.io.Serializable{
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    @Column(name = "id")
-	    private Integer id;
+	    @Column(name = "id_news")
+	    private Integer id_news;
 
-	    @Column(name = "title")
-	    private String title;
+	    @Column(name = "title_news")
+	    private String title_news;
 
-	    @Column(name = "content")
-	    private String content;
+	    @Column(name = "content_news")
+	    private String content_news;
 	    
-	    @Column(name = "created")
-	    private Date created;
+	    @Column(name = "created_news")
+	    private Date created_news;
 	    
-	    @Column(name = "modified")
-	    private Date modified;
+	    @Column(name = "modified_news")
+	    private Date modified_news;
 	    
-	    @Column(name = "author")
-	    private Integer author;
-	    
-	    @Column(name = "statusId")
-	    private Integer statusId;
+	    @ManyToOne
+	    @JoinColumn(name = "status_id_news")
+	    private EnumList enumList;
 	    
 		public News() {
 			super();
 		}
 
-		public News(Integer id, String title, String content, Date created, Date modified, Integer author,
-				Integer statusId) {
+		
+		public News(Integer id_news, String title_news, String content_news, Date created_news, Date modified_news,
+				EnumList enumList) {
 			super();
-			this.id = id;
-			this.title = title;
-			this.content = content;
-			this.created = created;
-			this.modified = modified;
-			this.author = author;
-			this.statusId = statusId;
+			this.id_news = id_news;
+			this.title_news = title_news;
+			this.content_news = content_news;
+			this.created_news = created_news;
+			this.modified_news = modified_news;
+			this.enumList = enumList;
 		}
 
-		public Integer getId() {
-			return id;
+
+		public Integer getId_news() {
+			return id_news;
 		}
 
-		public void setId(Integer id) {
-			this.id = id;
+
+		public void setId_news(Integer id_news) {
+			this.id_news = id_news;
 		}
 
-		public String getTitle() {
-			return title;
+
+		public String getTitle_news() {
+			return title_news;
 		}
 
-		public void setTitle(String title) {
-			this.title = title;
+
+		public void setTitle_news(String title_news) {
+			this.title_news = title_news;
 		}
 
-		public String getContent() {
-			return content;
+
+		public String getContent_news() {
+			return content_news;
 		}
 
-		public void setContent(String content) {
-			this.content = content;
+
+		public void setContent_news(String content_news) {
+			this.content_news = content_news;
 		}
 
-		public Date getCreated() {
-			return created;
+
+		public Date getCreated_news() {
+			return created_news;
 		}
 
-		public void setCreated(Date created) {
-			this.created = created;
+
+		public void setCreated_news(Date created_news) {
+			this.created_news = created_news;
 		}
 
-		public Date getModified() {
-			return modified;
+
+		public Date getModified_news() {
+			return modified_news;
 		}
 
-		public void setModified(Date modified) {
-			this.modified = modified;
+
+		public void setModified_news(Date modified_news) {
+			this.modified_news = modified_news;
 		}
 
-		public Integer getAuthor() {
-			return author;
+
+		public EnumList getEnumList() {
+			return enumList;
 		}
 
-		public void setAuthor(Integer author) {
-			this.author = author;
+
+		public void setEnumList(EnumList enumList) {
+			this.enumList = enumList;
 		}
 
-		public Integer getStatusId() {
-			return statusId;
-		}
-
-		public void setStatusId(Integer statusId) {
-			this.statusId = statusId;
-		}
-
-		
-		
 }

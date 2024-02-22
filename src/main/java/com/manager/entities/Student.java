@@ -12,194 +12,151 @@ import jakarta.persistence.*;
 public class Student implements java.io.Serializable{
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    @Column(name = "id")
-	    private Integer id;
+	    @Column(name = "id_student")
+	    private Integer id_student;
 
-	    @Column(name = "fullname")
-	    private String fullname;
+	    @Column(name = "fullname_student")
+	    private String fullname_student;
 
-	    @Column(name = "email")
-	    private String email;
+	    @Column(name = "email_student")
+	    private String email_student;
 	    
-	    @Column(name = "password")
-	    private String password;
+	    @Column(name = "password_student")
+	    private String password_student;
 	    
-	    @Column(name = "address")
-	    private String address;
+	    @Column(name = "address_student")
+	    private String address_student;
 	    
-	    @Column(name = "phone")
-	    private String phone;
+	    @Column(name = "phone_student")
+	    private String phone_student;
 
-	    @Column(name = "created")
-	    private Date created;
+	    @Column(name = "created_student")
+	    private Date created_student;
 
-	    @Column(name = "modified")
-	    private Date modified;
+	    @Column(name = "modified_student")
+	    private Date modified_student;
 	    
-	    @Column(name = "classId")
-	    private Integer classId;
+	    @ManyToOne
+	    @JoinColumn(name = "class_id_student")
+	    private Class gbclass;
 	    
-	    @Column(name = "roleId")
-	    private Integer roleId;
+	    @ManyToOne
+	    @JoinColumn(name = "role_id_student")
+	    private Role role;
 	    
-	    @Column(name = "statusId")
-	    private Integer statusId;
-
-
-		
-		public Integer getId() {
-			return id;
-		}
-
-
-
-		public void setId(Integer id) {
-			this.id = id;
-		}
-
-
-
-		public String getFullname() {
-			return fullname;
-		}
-
-
-
-		public void setFullname(String fullname) {
-			this.fullname = fullname;
-		}
-
-
-
-		public String getEmail() {
-			return email;
-		}
-
-
-
-		public void setEmail(String email) {
-			this.email = email;
-		}
-
-
-
-		public String getPassword() {
-			return password;
-		}
-
-
-
-		public void setPassword(String password) {
-			this.password = password;
-		}
-
-
-
-		public String getAddress() {
-			return address;
-		}
-
-
-
-		public void setAddress(String address) {
-			this.address = address;
-		}
-
-
-
-		public String getPhone() {
-			return phone;
-		}
-
-
-
-		public void setPhone(String phone) {
-			this.phone = phone;
-		}
-
-
-
-		public Date getCreated() {
-			return created;
-		}
-
-
-
-		public void setCreated(Date created) {
-			this.created = created;
-		}
-
-
-
-		public Date getModified() {
-			return modified;
-		}
-
-
-
-		public void setModified(Date modified) {
-			this.modified = modified;
-		}
-
-
-
-		public Integer getClassId() {
-			return classId;
-		}
-
-
-
-		public void setClassId(Integer classId) {
-			this.classId = classId;
-		}
-
-
-
-		public Integer getRoleId() {
-			return roleId;
-		}
-
-
-
-		public void setRoleId(Integer roleId) {
-			this.roleId = roleId;
-		}
-
-
-
-		public Integer getStatusId() {
-			return statusId;
-		}
-
-
-
-		public void setStatusId(Integer statusId) {
-			this.statusId = statusId;
-		}
-
-
-
-		public Student(Integer id, String fullname, String email, String password, String address, String phone,
-				Date created, Date modified, Integer classId, Integer roleId, Integer statusId) {
-			super();
-			this.id = id;
-			this.fullname = fullname;
-			this.email = email;
-			this.password = password;
-			this.address = address;
-			this.phone = phone;
-			this.created = created;
-			this.modified = modified;
-			this.classId = classId;
-			this.roleId = roleId;
-			this.statusId = statusId;
-		}
-
-
+	    @ManyToOne
+	    @JoinColumn(name = "status_id_student")
+	    private EnumList enumlist;
 
 		public Student() {
 			super();
 		}
 
+		public Student(Integer id_student, String fullname_student, String email_student, String password_student,
+				String address_student, String phone_student, Date created_student, Date modified_student,
+				Class gbclass, Role role, EnumList enumlist) {
+			super();
+			this.id_student = id_student;
+			this.fullname_student = fullname_student;
+			this.email_student = email_student;
+			this.password_student = password_student;
+			this.address_student = address_student;
+			this.phone_student = phone_student;
+			this.created_student = created_student;
+			this.modified_student = modified_student;
+			this.gbclass = gbclass;
+			this.role = role;
+			this.enumlist = enumlist;
+		}
+
+
+
+		public Integer getId_student() {
+			return id_student;
+		}
+
+		public void setId_student(Integer id_student) {
+			this.id_student = id_student;
+		}
+
+		public String getFullname_student() {
+			return fullname_student;
+		}
+
+		public void setFullname_student(String fullname_student) {
+			this.fullname_student = fullname_student;
+		}
+
+		public String getEmail_student() {
+			return email_student;
+		}
+
+		public void setEmail_student(String email_student) {
+			this.email_student = email_student;
+		}
+
+		public String getPassword_student() {
+			return password_student;
+		}
+
+		public void setPassword_student(String password_student) {
+			this.password_student = password_student;
+		}
+
+		public String getAddress_student() {
+			return address_student;
+		}
+
+		public void setAddress_student(String address_student) {
+			this.address_student = address_student;
+		}
+
+		public String getPhone_student() {
+			return phone_student;
+		}
+
+		public void setPhone_student(String phone_student) {
+			this.phone_student = phone_student;
+		}
+
+		public Date getCreated_student() {
+			return created_student;
+		}
+
+		public void setCreated_student(Date created_student) {
+			this.created_student = created_student;
+		}
+
+		public Date getModified_student() {
+			return modified_student;
+		}
+
+		public void setModified_student(Date modified_student) {
+			this.modified_student = modified_student;
+		}
+
+		public Class getGbclass() {
+			return gbclass;
+		}
+
+		public void setGbclass(Class gbclass) {
+			this.gbclass = gbclass;
+		}
+
+		public Role getRole() {
+			return role;
+		}
+
+		public void setRole(Role role) {
+			this.role = role;
+		}
+
+		public EnumList getEnumlist() {
+			return enumlist;
+		}
+
+		public void setEnumlist(EnumList enumlist) {
+			this.enumlist = enumlist;
+		}
 		
 }

@@ -12,84 +12,89 @@ import jakarta.persistence.*;
 public class Answer implements java.io.Serializable{
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    @Column(name = "id")
-	    private Integer id;
+	    @Column(name = "id_answer")
+	    private Integer id_answer;
 
-	    @Column(name = "name")
-	    private String name;
+	    @Column(name = "name_answer")
+	    private String name_answer;
 
-	    @Column(name = "created")
-	    private Date created;
+	    @Column(name = "created_answer")
+	    private Date created_answer;
 	    
-	    @Column(name = "modified")
-	    private Date modified;
+	    @Column(name = "modified_answer")
+	    private Date modified_answer;
 	    
-	    @Column(name = "questionId")
-	    private Integer questionId;
-	    
-	    @Column(name = "statusId")
-	    private Integer statusId;
+	    @ManyToOne
+	    @JoinColumn(name = "question_id_answer")
+	    private Question question;
+
+	    @ManyToOne
+	    @JoinColumn(name = "status_id_answer")
+	    private EnumList enumlist;
 	    
 		public Answer() {
 			super();
 		}
 
-		public Answer(Integer id, String name, Date created, Date modified, Integer questionId, Integer statusId) {
+		public Answer(Integer id_answer, String name_answer, Date created_answer, Date modified_answer,
+				Question question, EnumList enumlist) {
 			super();
-			this.id = id;
-			this.name = name;
-			this.created = created;
-			this.modified = modified;
-			this.questionId = questionId;
-			this.statusId = statusId;
+			this.id_answer = id_answer;
+			this.name_answer = name_answer;
+			this.created_answer = created_answer;
+			this.modified_answer = modified_answer;
+			this.question = question;
+			this.enumlist = enumlist;
 		}
 
-		public Integer getId() {
-			return id;
+		public Integer getId_answer() {
+			return id_answer;
 		}
 
-		public void setId(Integer id) {
-			this.id = id;
+		public void setId_answer(Integer id_answer) {
+			this.id_answer = id_answer;
 		}
 
-		public String getName() {
-			return name;
+		public String getName_answer() {
+			return name_answer;
 		}
 
-		public void setName(String name) {
-			this.name = name;
+		public void setName_answer(String name_answer) {
+			this.name_answer = name_answer;
 		}
 
-		public Date getCreated() {
-			return created;
+		public Date getCreated_answer() {
+			return created_answer;
 		}
 
-		public void setCreated(Date created) {
-			this.created = created;
+		public void setCreated_answer(Date created_answer) {
+			this.created_answer = created_answer;
 		}
 
-		public Date getModified() {
-			return modified;
+		public Date getModified_answer() {
+			return modified_answer;
 		}
 
-		public void setModified(Date modified) {
-			this.modified = modified;
+		public void setModified_answer(Date modified_answer) {
+			this.modified_answer = modified_answer;
 		}
 
-		public Integer getQuestionId() {
-			return questionId;
+		public Question getQuestion() {
+			return question;
 		}
 
-		public void setQuestionId(Integer questionId) {
-			this.questionId = questionId;
+		public void setQuestion(Question question) {
+			this.question = question;
 		}
 
-		public Integer getStatusId() {
-			return statusId;
+		public EnumList getEnumlist() {
+			return enumlist;
 		}
 
-		public void setStatusId(Integer statusId) {
-			this.statusId = statusId;
+		public void setEnumlist(EnumList enumlist) {
+			this.enumlist = enumlist;
 		}
+		
+	
 		
 }

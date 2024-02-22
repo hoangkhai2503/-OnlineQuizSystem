@@ -13,98 +13,104 @@ import jakarta.persistence.*;
 public class TestDetail implements java.io.Serializable{
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    @Column(name = "id")
-	    private Integer id;
+	    @Column(name = "id_testdetail")
+	    private Integer id_testdetail;
 
-	    @Column(name = "testId")
-	    private Integer testId;
+	    @ManyToOne
+	    @JoinColumn(name = "test_id_testdetail")
+	    private Test test;
 
-	    @Column(name = "studentId")
-	    private Integer studentId;
+	    @ManyToOne
+	    @JoinColumn(name = "student_id_testdetail")
+	    private Student student;
 
-	    @Column(name = "score")
-	    private BigDecimal  score;
+	    @Column(name = "score_testdetail")
+	    private BigDecimal  score_testdetail;
 	    
-	    @Column(name = "created")
-	    private Date created;
+	    @DateTimeFormat(pattern = "dd/MM/yyyy")
+	    @Column(name = "created_testdetail")
+	    private Date created_testdetail;
 	    
-	    @Column(name = "modified")
-	    private Date modified;
+	    @DateTimeFormat(pattern = "dd/MM/yyyy")
+	    @Column(name = "modified_testdetail")
+	    private Date modified_testdetail;
 	    
-	    @Column(name = "statusId")
-	    private Integer statusId;
-
-		public Integer getId() {
-			return id;
-		}
-
-		public void setId(Integer id) {
-			this.id = id;
-		}
-
-		public Integer getTestId() {
-			return testId;
-		}
-
-		public void setTestId(Integer testId) {
-			this.testId = testId;
-		}
-
-		public Integer getStudentId() {
-			return studentId;
-		}
-
-		public void setStudentId(Integer studentId) {
-			this.studentId = studentId;
-		}
-
-		public BigDecimal getScore() {
-			return score;
-		}
-
-		public void setScore(BigDecimal score) {
-			this.score = score;
-		}
-
-		public Date getCreated() {
-			return created;
-		}
-
-		public void setCreated(Date created) {
-			this.created = created;
-		}
-
-		public Date getModified() {
-			return modified;
-		}
-
-		public void setModified(Date modified) {
-			this.modified = modified;
-		}
-
-		public Integer getStatusId() {
-			return statusId;
-		}
-
-		public void setStatusId(Integer statusId) {
-			this.statusId = statusId;
-		}
-
-		public TestDetail(Integer id, Integer testId, Integer studentId, BigDecimal score, Date created, Date modified,
-				Integer statusId) {
-			super();
-			this.id = id;
-			this.testId = testId;
-			this.studentId = studentId;
-			this.score = score;
-			this.created = created;
-			this.modified = modified;
-			this.statusId = statusId;
-		}
+	    @ManyToOne
+	    @JoinColumn(name = "status_id_testdetail")
+	    private EnumList enumList;
 
 		public TestDetail() {
 			super();
 		}
 
-	    
+		public TestDetail(Integer id_testdetail, Test test, Student student, BigDecimal score_testdetail,
+				Date created_testdetail, Date modified_testdetail, EnumList enumList) {
+			super();
+			this.id_testdetail = id_testdetail;
+			this.test = test;
+			this.student = student;
+			this.score_testdetail = score_testdetail;
+			this.created_testdetail = created_testdetail;
+			this.modified_testdetail = modified_testdetail;
+			this.enumList = enumList;
+		}
+
+		public Integer getId_testdetail() {
+			return id_testdetail;
+		}
+
+		public void setId_testdetail(Integer id_testdetail) {
+			this.id_testdetail = id_testdetail;
+		}
+
+		public Test getTest() {
+			return test;
+		}
+
+		public void setTest(Test test) {
+			this.test = test;
+		}
+
+		public Student getStudent() {
+			return student;
+		}
+
+		public void setStudent(Student student) {
+			this.student = student;
+		}
+
+		public BigDecimal getScore_testdetail() {
+			return score_testdetail;
+		}
+
+		public void setScore_testdetail(BigDecimal score_testdetail) {
+			this.score_testdetail = score_testdetail;
+		}
+
+		public Date getCreated_testdetail() {
+			return created_testdetail;
+		}
+
+		public void setCreated_testdetail(Date created_testdetail) {
+			this.created_testdetail = created_testdetail;
+		}
+
+		public Date getModified_testdetail() {
+			return modified_testdetail;
+		}
+
+		public void setModified_testdetail(Date modified_testdetail) {
+			this.modified_testdetail = modified_testdetail;
+		}
+
+		public EnumList getEnumList() {
+			return enumList;
+		}
+
+		public void setEnumList(EnumList enumList) {
+			this.enumList = enumList;
+		}
+		
+		
+	  
 }

@@ -12,61 +12,69 @@ import jakarta.persistence.*;
 public class Variable implements java.io.Serializable{
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    @Column(name = "id")
-	    private Integer id;
+	    @Column(name = "id_variable")
+	    private Integer id_variable;
 
-	    @Column(name = "name")
-	    private String name;
+	    @Column(name = "name_variable")
+	    private String name_variable;
 
-	    @Column(name = "image")
-	    private String image;
+	    @Column(name = "image_variable")
+	    private String image_variable;
 
-	    @Column(name = "code")
-	    private String code;
+	    @Column(name = "code_variable")
+	    private String code_variable;
 
-		public Integer getId() {
-			return id;
-		}
-
-		public void setId(Integer id) {
-			this.id = id;
-		}
-
-		public String getName() {
-			return name;
-		}
-
-		public void setName(String name) {
-			this.name = name;
-		}
-
-		public String getImage() {
-			return image;
-		}
-
-		public void setImage(String image) {
-			this.image = image;
-		}
-
-		public String getCode() {
-			return code;
-		}
-
-		public void setCode(String code) {
-			this.code = code;
-		}
-
-		public Variable(Integer id, String name, String image, String code) {
-			super();
-			this.id = id;
-			this.name = name;
-			this.image = image;
-			this.code = code;
-		}
-
+		
 		public Variable() {
 			super();
 		}
 
+
+		public Variable(Integer id_variable, String name_variable, String image_variable, String code_variable) {
+			super();
+			this.id_variable = id_variable;
+			this.name_variable = name_variable;
+			this.image_variable = image_variable;
+			this.code_variable = code_variable;
+		}
+
+
+		public Integer getId_variable() {
+			return id_variable;
+		}
+
+
+		public void setId_variable(Integer id_variable) {
+			this.id_variable = id_variable;
+		}
+
+
+		public String getName_variable() {
+			return name_variable;
+		}
+
+
+		public void setName_variable(String name_variable) {
+			this.name_variable = name_variable;
+		}
+
+
+		public String getImage_variable() {
+			return image_variable;
+		}
+
+
+		public void setImage_variable(String image_variable) {
+			this.image_variable = image_variable;
+		}
+
+
+		public String getCode_variable() {
+			return code_variable;
+		}
+		
+		public void setCode_variable(String code_variable) {
+			this.code_variable = code_variable;
+		}
    
 }

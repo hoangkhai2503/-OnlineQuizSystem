@@ -12,49 +12,49 @@ import jakarta.persistence.*;
 public class Role implements java.io.Serializable{
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    @Column(name = "id")
-	    private Integer id;
+	    @Column(name = "id_role")
+	    private Integer id_role;
 
-	    @Column(name = "name")
-	    private String name;
+	    @Column(name = "name_role")
+	    private String name_role;
 
-	    @Column(name = "statusId")
-	    private String statusId;
+	    @ManyToOne
+	    @JoinColumn(name = "status_id_role")
+	    private EnumList enumList;
 	    
 		public Role() {
 			super();
 		}
 
-		public Role(Integer id, String name, String statusId) {
+		public Role(Integer id_role, String name_role, EnumList enumList) {
 			super();
-			this.id = id;
-			this.name = name;
-			this.statusId = statusId;
+			this.id_role = id_role;
+			this.name_role = name_role;
+			this.enumList = enumList;
 		}
 
-		public Integer getId() {
-			return id;
+		public Integer getId_role() {
+			return id_role;
 		}
 
-		public void setId(Integer id) {
-			this.id = id;
+		public void setId_role(Integer id_role) {
+			this.id_role = id_role;
 		}
 
-		public String getName() {
-			return name;
+		public String getName_role() {
+			return name_role;
 		}
 
-		public void setName(String name) {
-			this.name = name;
+		public void setName_role(String name_role) {
+			this.name_role = name_role;
 		}
 
-		public String getStatusId() {
-			return statusId;
+		public EnumList getEnumList() {
+			return enumList;
 		}
 
-		public void setStatusId(String statusId) {
-			this.statusId = statusId;
+		public void setEnumList(EnumList enumList) {
+			this.enumList = enumList;
 		}
-		// endregion
-		
+
 }

@@ -12,62 +12,62 @@ import jakarta.persistence.*;
 public class Typetest implements java.io.Serializable{
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    @Column(name = "id")
-	    private Integer id;
+	    @Column(name = "id_typetest")
+	    private Integer id_typetest;
 
-	    @Column(name = "name")
-	    private String name;
+	    @Column(name = "name_typetest")
+	    private String name_typetest;
 
-	    @Column(name = "time")
-	    private String time;
+	    @Column(name = "time_typetest")
+	    private String time_typetest;
 
-	    @Column(name = "quantity_question")
+	    @Column(name = "quantityquestion")
 	    private Integer quantityQuestion;
 
-	    @Column(name = "score_factor")
+	    @Column(name = "scorefactor")
 	    private Integer scoreFactor;
 	    
 	    @ManyToOne
-	    @JoinColumn(name = "status_id_typetest")
+	    @JoinColumn(name = "status_id_typetest ")
 	    private EnumList enumList;
-
-		public Typetest(Integer id, String name, String time, Integer quantityQuestion, Integer scoreFactor,
-				EnumList enumList) {
-			super();
-			this.id = id;
-			this.name = name;
-			this.time = time;
-			this.quantityQuestion = quantityQuestion;
-			this.scoreFactor = scoreFactor;
-			this.enumList = enumList;
-		}
 
 		public Typetest() {
 			super();
 		}
 
-		public Integer getId() {
-			return id;
+		public Typetest(Integer id_typetest, String name_typetest, String time_typetest, Integer quantityQuestion,
+				Integer scoreFactor, EnumList enumList) {
+			super();
+			this.id_typetest = id_typetest;
+			this.name_typetest = name_typetest;
+			this.time_typetest = time_typetest;
+			this.quantityQuestion = quantityQuestion;
+			this.scoreFactor = scoreFactor;
+			this.enumList = enumList;
 		}
 
-		public void setId(Integer id) {
-			this.id = id;
+		public Integer getId_typetest() {
+			return id_typetest;
 		}
 
-		public String getName() {
-			return name;
+		public void setId_typetest(Integer id_typetest) {
+			this.id_typetest = id_typetest;
 		}
 
-		public void setName(String name) {
-			this.name = name;
+		public String getName_typetest() {
+			return name_typetest;
 		}
 
-		public String getTime() {
-			return time;
+		public void setName_typetest(String name_typetest) {
+			this.name_typetest = name_typetest;
 		}
 
-		public void setTime(String time) {
-			this.time = time;
+		public String getTime_typetest() {
+			return time_typetest;
+		}
+
+		public void setTime_typetest(String time_typetest) {
+			this.time_typetest = time_typetest;
 		}
 
 		public Integer getQuantityQuestion() {
@@ -94,5 +94,4 @@ public class Typetest implements java.io.Serializable{
 			this.enumList = enumList;
 		}
 
-	    
 }

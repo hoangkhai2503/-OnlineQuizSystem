@@ -12,17 +12,22 @@ import jakarta.persistence.*;
 public class Superadmin implements java.io.Serializable{
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    @Column(name = "id")
-	    private Integer id;
+	    @Column(name = "id_superadmin")
+	    private Integer id_superadmin;
 
-	    @Column(name = "username")
-	    private String username;
+	    @Column(name = "username_superadmin")
+	    private String username_superadmin;
+	    
+	    @Column(name = "password_superadmin")
+	    private String password_superadmin;
 
-	    @Column(name = "roleId")
-	    private Integer roleId;
+	    @ManyToOne
+	    @JoinColumn(name = "role_id_superadmin")
+	    private Role role;
 
-	    @Column(name = "statusId")
-	    private Integer statusId;
+	    @ManyToOne
+	    @JoinColumn(name = "status_id_superadmin")
+	    private EnumList enumlist;
 
 
 		public Superadmin() {
@@ -30,51 +35,65 @@ public class Superadmin implements java.io.Serializable{
 		}
 
 
-		public Superadmin(Integer id, String username, Integer roleId, Integer statusId) {
+		public Superadmin(Integer id_superadmin, String username_superadmin, String password_superadmin, Role role,
+				EnumList enumlist) {
 			super();
-			this.id = id;
-			this.username = username;
-			this.roleId = roleId;
-			this.statusId = statusId;
+			this.id_superadmin = id_superadmin;
+			this.username_superadmin = username_superadmin;
+			this.password_superadmin = password_superadmin;
+			this.role = role;
+			this.enumlist = enumlist;
 		}
 
 
-		public Integer getId() {
-			return id;
+		public Integer getId_superadmin() {
+			return id_superadmin;
 		}
 
 
-		public void setId(Integer id) {
-			this.id = id;
+		public void setId_superadmin(Integer id_superadmin) {
+			this.id_superadmin = id_superadmin;
 		}
 
 
-		public String getUsername() {
-			return username;
+		public String getUsername_superadmin() {
+			return username_superadmin;
 		}
 
 
-		public void setUsername(String username) {
-			this.username = username;
+		public void setUsername_superadmin(String username_superadmin) {
+			this.username_superadmin = username_superadmin;
 		}
 
 
-		public Integer getRoleId() {
-			return roleId;
+		public String getPassword_superadmin() {
+			return password_superadmin;
 		}
 
 
-		public void setRoleId(Integer roleId) {
-			this.roleId = roleId;
+		public void setPassword_superadmin(String password_superadmin) {
+			this.password_superadmin = password_superadmin;
 		}
 
 
-		public Integer getStatusId() {
-			return statusId;
+		public Role getRole() {
+			return role;
 		}
+
+
+		public void setRole(Role role) {
+			this.role = role;
+		}
+
+
+		public EnumList getEnumlist() {
+			return enumlist;
+		}
+
+
+		public void setEnumlist(EnumList enumlist) {
+			this.enumlist = enumlist;
+		}
+
 		
-		public void setStatusId(Integer statusId) {
-			this.statusId = statusId;
-		}
-   
 }

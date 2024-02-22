@@ -7,179 +7,185 @@ import java.util.Set;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.*;
+
 @Entity
-@Table(name = "gb_typetest")
-public class Test implements java.io.Serializable{
-	 @Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    @Column(name = "id")
-	    private Integer id;
+@Table(name = "gb_test")
+public class Test implements java.io.Serializable {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_test")
+	private Integer id_test;
 
-	    @Column(name = "name")
-	    private String name;
+	@Column(name = "name_test")
+	private String name_test;
 
-	    @Column(name = "classId")
-	    private Integer classId;
+	@ManyToOne
+	@JoinColumn(name = "class_id_test")
+	private Class gbclass;
 
-	    @Column(name = "subjectId")
-	    private Integer subjectId;
-	    
-	    @Column(name = "termId")
-	    private Integer termId;
-	    
-	    @Column(name = "typeTestId")
-	    private Integer typeTestId;
-	    
-	    @Column(name = "codeTestId")
-	    private Integer codeTestId;
-	    
-	    @Column(name = "startTime")
-	    private Date startTime;
-	    
-	    @Column(name = "onGoing")
-	    private Date onGoing;
-	    
-	    @Column(name = "endTime")
-	    private Date endTime;
-	    
-	    @Column(name = "created")
-	    private Date created;
-	    
-	    @Column(name = "modified")
-	    private Date modified;
-	    
-	    @Column(name = "statusId")
-	    private Integer statusId;
+	@ManyToOne
+	@JoinColumn(name = "subject_id_test")
+	private Subject subject;
 
-		public Integer getId() {
-			return id;
-		}
+	@ManyToOne
+	@JoinColumn(name = "term_id_test")
+	private Term term;
 
-		public void setId(Integer id) {
-			this.id = id;
-		}
+	@ManyToOne
+	@JoinColumn(name = "typetest_id_test")
+	private Typetest typetest;
 
-		public String getName() {
-			return name;
-		}
+	@ManyToOne
+	@JoinColumn(name = "codetest_id_test")
+	private Codetest codetest;
+	
+	@Column(name = "starttime_test")
+	// @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+	private Date starttime_test;
 
-		public void setName(String name) {
-			this.name = name;
-		}
+	@Column(name = "ongoing_test")
+	private Date ongoing_test;
 
-		public Integer getClassId() {
-			return classId;
-		}
+	@Column(name = "endtime_test")
+	private Date endtime_test;
 
-		public void setClassId(Integer classId) {
-			this.classId = classId;
-		}
+	@Column(name = "created_test")
+	private Date created_test;
 
-		public Integer getSubjectId() {
-			return subjectId;
-		}
+	@Column(name = "modified_test")
+	private Date modified_test;
 
-		public void setSubjectId(Integer subjectId) {
-			this.subjectId = subjectId;
-		}
+	@ManyToOne
+	@JoinColumn(name = "status_id_test")
+	private EnumList enumlist;
 
-		public Integer getTermId() {
-			return termId;
-		}
+	public Test() {
+		super();
+	}
 
-		public void setTermId(Integer termId) {
-			this.termId = termId;
-		}
+	public Test(Integer id_test, String name_test, Class gbclass, Subject subject, Term term, Typetest typetest,
+			Codetest codetest, Date starttime_test, Date ongoing_test, Date endtime_test, Date created_test,
+			Date modified_test, EnumList enumlist) {
+		super();
+		this.id_test = id_test;
+		this.name_test = name_test;
+		this.gbclass = gbclass;
+		this.subject = subject;
+		this.term = term;
+		this.typetest = typetest;
+		this.codetest = codetest;
+		this.starttime_test = starttime_test;
+		this.ongoing_test = ongoing_test;
+		this.endtime_test = endtime_test;
+		this.created_test = created_test;
+		this.modified_test = modified_test;
+		this.enumlist = enumlist;
+	}
 
-		public Integer getTypeTestId() {
-			return typeTestId;
-		}
+	public Integer getId_test() {
+		return id_test;
+	}
 
-		public void setTypeTestId(Integer typeTestId) {
-			this.typeTestId = typeTestId;
-		}
+	public void setId_test(Integer id_test) {
+		this.id_test = id_test;
+	}
 
-		public Integer getCodeTestId() {
-			return codeTestId;
-		}
+	public String getName_test() {
+		return name_test;
+	}
 
-		public void setCodeTestId(Integer codeTestId) {
-			this.codeTestId = codeTestId;
-		}
+	public void setName_test(String name_test) {
+		this.name_test = name_test;
+	}
 
-		public Date getStartTime() {
-			return startTime;
-		}
+	public Class getGbclass() {
+		return gbclass;
+	}
 
-		public void setStartTime(Date startTime) {
-			this.startTime = startTime;
-		}
+	public void setGbclass(Class gbclass) {
+		this.gbclass = gbclass;
+	}
 
-		public Date getOnGoing() {
-			return onGoing;
-		}
+	public Subject getSubject() {
+		return subject;
+	}
 
-		public void setOnGoing(Date onGoing) {
-			this.onGoing = onGoing;
-		}
+	public void setSubject(Subject subject) {
+		this.subject = subject;
+	}
 
-		public Date getEndTime() {
-			return endTime;
-		}
+	public Term getTerm() {
+		return term;
+	}
 
-		public void setEndTime(Date endTime) {
-			this.endTime = endTime;
-		}
+	public void setTerm(Term term) {
+		this.term = term;
+	}
 
-		public Date getCreated() {
-			return created;
-		}
+	public Typetest getTypetest() {
+		return typetest;
+	}
 
-		public void setCreated(Date created) {
-			this.created = created;
-		}
+	public void setTypetest(Typetest typetest) {
+		this.typetest = typetest;
+	}
 
-		public Date getModified() {
-			return modified;
-		}
+	public Codetest getCodetest() {
+		return codetest;
+	}
 
-		public void setModified(Date modified) {
-			this.modified = modified;
-		}
+	public void setCodetest(Codetest codetest) {
+		this.codetest = codetest;
+	}
 
-		public Integer getStatusId() {
-			return statusId;
-		}
+	public Date getStarttime_test() {
+		return starttime_test;
+	}
 
-		public void setStatusId(Integer statusId) {
-			this.statusId = statusId;
-		}
+	public void setStarttime_test(Date starttime_test) {
+		this.starttime_test = starttime_test;
+	}
 
-		public Test(Integer id, String name, Integer classId, Integer subjectId, Integer termId, Integer typeTestId,
-				Integer codeTestId, Date startTime, Date onGoing, Date endTime, Date created, Date modified,
-				Integer statusId) {
-			super();
-			this.id = id;
-			this.name = name;
-			this.classId = classId;
-			this.subjectId = subjectId;
-			this.termId = termId;
-			this.typeTestId = typeTestId;
-			this.codeTestId = codeTestId;
-			this.startTime = startTime;
-			this.onGoing = onGoing;
-			this.endTime = endTime;
-			this.created = created;
-			this.modified = modified;
-			this.statusId = statusId;
-		}
+	public Date getOngoing_test() {
+		return ongoing_test;
+	}
 
-		public Test() {
-			super();
-		}
+	public void setOngoing_test(Date ongoing_test) {
+		this.ongoing_test = ongoing_test;
+	}
 
-	    
-	    
-	    
-	    
+	public Date getEndtime_test() {
+		return endtime_test;
+	}
+
+	public void setEndtime_test(Date endtime_test) {
+		this.endtime_test = endtime_test;
+	}
+
+	public Date getCreated_test() {
+		return created_test;
+	}
+
+	public void setCreated_test(Date created_test) {
+		this.created_test = created_test;
+	}
+
+	public Date getModified_test() {
+		return modified_test;
+	}
+
+	public void setModified_test(Date modified_test) {
+		this.modified_test = modified_test;
+	}
+
+	public EnumList getEnumlist() {
+		return enumlist;
+	}
+
+	public void setEnumlist(EnumList enumlist) {
+		this.enumlist = enumlist;
+	}
+
+
+
 }
