@@ -10,26 +10,26 @@ public class AuthenticationController {
 	// login
 	@RequestMapping(value = { "login" }, method = RequestMethod.GET)
 	public String login() {
-		return "admin/authentication/login";
+		return "admin/page/login";
 
 	}
 
 	// regsiter
 	@RequestMapping(value = { "register" }, method = RequestMethod.GET)
 	public String register() {
-		return "admin/authentication/register";
+		return "admin/page/register";
 
 	}
 
 	// 404 page
 	@RequestMapping(value = { "error" }, method = RequestMethod.GET)
 	public String error() {
-		return "admin/authentication/error";
+		return "admin/page/error";
 	}
 
 	// project
 	@RequestMapping(value = { "profile" }, method = RequestMethod.GET)
 	public String profile() {
-		return "admin/authentication/profile";
+		return "admin/page/profile";
 	}
 }
