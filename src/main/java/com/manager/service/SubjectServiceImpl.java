@@ -14,5 +14,16 @@ public class SubjectServiceImpl implements SubjectService{
 		// TODO Auto-generated method stub
 		return subjectRepository.findAll();
 	}
+	@Override
+	public boolean save(Subject subject) {
+		try {
+
+			subjectRepository.save(subject);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 }

@@ -41,8 +41,9 @@
 						<h5 class="card-header">Subject Table</h5>
 						<br>
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-							<input class="btn btn-primary" type="submit" value=" Add New "></input>
-
+							<a th:href="@{/admin/addSubject}">
+								<input class="btn btn-primary" type="submit" value=" Add New "></input>
+							</a>
 							<input class="btn btn-primary" type="submit" value=" Filter "
 								style="margin-left: 20px;float:right"></input>
 
@@ -86,7 +87,7 @@
 											<td th:text="${subject.enumList.name}"></td>
 											<td>Edit | Delete</td>
 										</tr>
-										
+
 									</tbody>
 									<tfoot>
 										<tr>
@@ -107,7 +108,7 @@
 				<!-- end basic table  -->
 				<!-- ============================================================== -->
 			</div>
-			
+
 		</div>
 		<!-- ============================================================== -->
 	</div>
