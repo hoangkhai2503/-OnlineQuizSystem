@@ -12,19 +12,7 @@ public class HomeController {
 	public String login() {
 		return "admin/home/index";
 	}
-
-	// form
-	@RequestMapping(value = { "form" }, method = RequestMethod.GET)
-	public String form() {
-		return "admin/addForm/index";
-	}
-
-	// table
-	@RequestMapping(value = { "table" }, method = RequestMethod.GET)
-	public String table() {
-		return "admin/table/index";
-	}
-
+	
 	// material
 	@RequestMapping(value = { "material" }, method = RequestMethod.GET)
 	public String material() {
