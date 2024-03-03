@@ -14,7 +14,7 @@
 			<div class="row">
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="page-header">
-						<h2 class="pageheader-title">Form Add Question </h2>
+						<h2 class="pageheader-title">Form Edit Question </h2>
 						<p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit
 							amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
 						<div class="page-breadcrumb">
@@ -38,12 +38,13 @@
 				<!-- ============================================================== -->
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="card">
-						<h5 class="card-header">Add New Question</h5>
+						<h5 class="card-header">Edit Question</h5>
 						<div class="card-body">
-							<form method="post" th:action="@{/admin/addQuestion}" enctype="multipart/form-data">					
+							<form method="post" th:action="@{/admin/editQuestion}" enctype="multipart/form-data">					
 								<div class="form-group row">
 									<label class="col-12 col-sm-3 col-form-label text-sm-right">Question</label>
 									<div class="col-12 col-sm-8 col-lg-6">
+										<input type="hidden" th:field="${question.id_question}">
 										<textarea required="" class="form-control" th:field="${question.name_question}"></textarea>
 									</div>
 								</div>
@@ -54,11 +55,16 @@
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                     <label class="custom-control custom-radio">
-                                                        <input type="radio" class="custom-control-input" name="correct" value="Answer 1" id="Answer 1"><span class="custom-control-label"></span>
+														<th:block th:if="${status == 'Answer 1'}">
+															<input type="radio" class="custom-control-input" name="correct" value="Answer 1" id="Answer 1" checked="true"><span class="custom-control-label"></span>
+														</th:block>
+                                                        <th:block th:if="${status != 'Answer 1'}">
+															<input type="radio" class="custom-control-input" name="correct" value="Answer 1" id="Answer 1"><span class="custom-control-label"></span>
+														</th:block>
                                                     </label>
                                                 </div>
                                             </div>
-                                            <input type="text" class="form-control" name="answer1">
+                                            <input type="text" class="form-control" th:field="${answer1.name_answer}">
                                         </div>
 									</div>
 								</div>
@@ -69,11 +75,16 @@
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                     <label class="custom-control custom-radio">
-                                                        <input type="radio" class="custom-control-input" name="correct" value="Answer 2" id="Answer 2"><span class="custom-control-label"></span>
+                                                        <th:block th:if="${status == 'Answer 2'}">
+															<input type="radio" class="custom-control-input" name="correct" value="Answer 2" id="Answer 2" checked="true"><span class="custom-control-label"></span>
+														</th:block>
+                                                        <th:block th:if="${status != 'Answer 2'}">
+															<input type="radio" class="custom-control-input" name="correct" value="Answer 2" id="Answer 2"><span class="custom-control-label"></span>
+														</th:block>
                                                     </label>
                                                 </div>
                                             </div>
-                                            <input type="text" class="form-control" name="answer2">
+                                            <input type="text" class="form-control" th:field="${answer2.name_answer}">
                                         </div>
 									</div>
 								</div>
@@ -84,11 +95,16 @@
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                     <label class="custom-control custom-radio">
-                                                        <input type="radio" class="custom-control-input" name="correct" value="Answer 3" id="Answer 3"><span class="custom-control-label"></span>
+                                                        <th:block th:if="${status == 'Answer 3'}">
+															<input type="radio" class="custom-control-input" name="correct" value="Answer 3" id="Answer 3" checked="true"><span class="custom-control-label"></span>
+														</th:block>
+                                                        <th:block th:if="${status != 'Answer 3'}">
+															<input type="radio" class="custom-control-input" name="correct" value="Answer 3" id="Answer 3"><span class="custom-control-label"></span>
+														</th:block>
                                                     </label>
                                                 </div>
                                             </div>
-                                            <input type="text" class="form-control" name="answer3">
+                                            <input type="text" class="form-control" th:field="${answer3.name_answer}">
                                         </div>
 									</div>
 								</div>
@@ -99,11 +115,16 @@
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                     <label class="custom-control custom-radio">
-                                                        <input type="radio" class="custom-control-input" name="correct" value="Answer 4" id="Answer 4"><span class="custom-control-label"></span>
+                                                        <th:block th:if="${status == 'Answer 4'}">
+															<input type="radio" class="custom-control-input" name="correct" value="Answer 4" id="Answer 4" checked="true"><span class="custom-control-label"></span>
+														</th:block>
+                                                        <th:block th:if="${status != 'Answer 4'}">
+															<input type="radio" class="custom-control-input" name="correct" value="Answer 4" id="Answer 4"><span class="custom-control-label"></span>
+														</th:block>
                                                     </label>
                                                 </div>
                                             </div>
-                                            <input type="text" class="form-control" name="answer4">
+                                            <input type="text" class="form-control" th:field="${answer4.name_answer}">
                                         </div>
 									</div>
 								</div>

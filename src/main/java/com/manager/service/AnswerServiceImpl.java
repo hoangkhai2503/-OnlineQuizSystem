@@ -25,4 +25,9 @@ public class AnswerServiceImpl implements AnswerService{
 		}
 	}
 
+	@Override
+	public Iterable<Answer> findByIdQuestion(int id_question) {
+		// TODO Auto-generated method stub
+		return answerRepository.findByIdQuestion(id_question);
+	}
 }
