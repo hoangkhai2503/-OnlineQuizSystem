@@ -41,8 +41,9 @@
 						<h5 class="card-header">Term Table</h5>
 						<br>
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+							<a th:href="@{/admin/addTerm}">
 							<input class="btn btn-primary" type="submit" value=" Add New "></input>
-
+							</a>
 							<input class="btn btn-primary" type="submit" value=" Filter "
 								style="margin-left: 20px;float:right"></input>
 
@@ -70,9 +71,9 @@
 										<tr>
 											<th>Id</th>
 											<th>ClassName</th>
-											<th>Status</th>
-											<th>Teacher</th>
 											<th>Created</th>
+											<th>Teacher</th>
+											<th>Status</th>
 											<th>Action</th>
 										</tr>
 									</thead>
@@ -83,7 +84,15 @@
 										    <td th:text="${#dates.format(term.created_term, 'dd-MM-yyyy')}"></td>
 										    <td th:text="${#dates.format(term.modified_term, 'dd-MM-yyyy')}"></td>
 											<td th:text="${term.enumlist.name}"></td>
-											<td>Edit | Delete</td>
+											<td>
+											<a th:href="@{'/admin/editTerm/'+${term.id_term}}">
+											Edit
+											<a>
+											 | 
+											<a th:href="@{'/admin/deleteTeacher/'+${term.id_term}}">
+											 Delete
+											</a>
+											</td>
 										</tr>
 										
 									</tbody>

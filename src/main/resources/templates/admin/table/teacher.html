@@ -21,7 +21,7 @@
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-									<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Tables</a></li>
+									<li class="breadcrumb-item"><a th:href="@{/admin/teacher}" class="breadcrumb-link">Tables</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Data Tables</li>
 								</ol>
 							</nav>
@@ -41,7 +41,14 @@
 						<h5 class="card-header">Teacher Table</h5>
 						<br>
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-							<input class="btn btn-primary" type="submit" value=" Add New "></input>
+							
+							<a th:href="@{/admin/addTeacher}" >
+							<input class="btn btn-primary" type="submit" value=" Add Teacher "></input>
+							</a>
+							
+							<a th:href="@{/admin/teacher-inactive}" >
+							<input class="btn btn-primary" type="submit" value=" Recycle Bin "></input>
+							</a>
 
 							<input class="btn btn-primary" type="submit" value=" Filter "
 								style="margin-left: 20px;float:right"></input>
@@ -83,7 +90,15 @@
 											<td th:text="${teacher.email_teacher}"></td>
 											<td th:text="${teacher.phone_teacher}"></td>
 											<td th:text="${teacher.enumlist.name}"></td>
-											<td>Edit | Delete</td>
+											<td>
+											<a th:href="@{'/admin/editTeacher/'+${teacher.id_teacher}}">
+											Edit
+											<a>
+											 | 
+											<a th:href="@{'/admin/deleteTeacher/'+${teacher.id_teacher}}">
+											 Delete
+											</a>
+											</td>
 										</tr>
 										
 									</tbody>

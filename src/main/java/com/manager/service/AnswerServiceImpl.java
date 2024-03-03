@@ -14,5 +14,15 @@ public class AnswerServiceImpl implements AnswerService{
 		// TODO Auto-generated method stub
 		return answerRepository.findAll();
 	}
+	@Override
+	public boolean save(Answer answer) {
+		try {
+			answerRepository.save(answer);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 }

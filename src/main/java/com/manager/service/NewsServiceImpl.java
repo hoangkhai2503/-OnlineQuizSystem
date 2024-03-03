@@ -14,5 +14,29 @@ public class NewsServiceImpl implements NewsService{
 		// TODO Auto-generated method stub
 		return newsRepository.findAll();
 	}
+	@Override
+	public boolean save(News news) {
+		try {
+			newsRepository.save(news);
+			return true;
+		} catch (Exception e){
+			e.printStackTrace();
+			return false;
+		}
+	}
+	@Override
+	public News findById(int id) {
+		return newsRepository.findById(id).get();
+	}
+	@Override
+	public boolean delete(int id) {
+		try {
+			newsRepository.delete(findById(id));
+			return true;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 }

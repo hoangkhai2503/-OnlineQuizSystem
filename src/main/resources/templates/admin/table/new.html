@@ -41,8 +41,10 @@
 						<h5 class="card-header">New Table</h5>
 						<br>
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+							<a th:href="@{/admin/addNew}" >
 							<input class="btn btn-primary" type="submit" value=" Add New "></input>
-
+							</a>
+								
 							<input class="btn btn-primary" type="submit" value=" Filter "
 								style="margin-left: 20px;float:right"></input>
 
@@ -71,7 +73,7 @@
 											<th>Id</th>
 											<th>Title</th>
 											<th>Created</th>
-											<th>Last Modifile</th>
+											<th>Last Modified</th>
 											<th>Status</th>
 											<th>Action</th>
 										</tr>
@@ -83,7 +85,15 @@
 										    <td th:text="${#dates.format(news.created_news, 'dd-MM-yyyy')}"></td>
 										    <td th:text="${#dates.format(news.modified_news, 'dd-MM-yyyy')}"></td>
 											<td th:text="${news.enumList.name}"></td>
-											<td>Edit | Delete</td>
+											<td>
+											<a th:href="@{'/admin/editNews/'+${news.id_news}}">
+											Edit 
+											</a>
+											| 
+											<a th:href="@{'/admin/deleteNews/'+${news.id_news}}">
+											Delete
+											</a>
+											</td>
 										</tr>
 										
 									</tbody>

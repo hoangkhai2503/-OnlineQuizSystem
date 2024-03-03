@@ -36,6 +36,16 @@ public class Answer implements java.io.Serializable{
 			super();
 		}
 
+		public Answer(String name_answer, Date created_answer, Date modified_answer, Question question,
+				EnumList enumlist) {
+			super();
+			this.name_answer = name_answer;
+			this.created_answer = created_answer;
+			this.modified_answer = modified_answer;
+			this.question = question;
+			this.enumlist = enumlist;
+		}
+
 		public Answer(Integer id_answer, String name_answer, Date created_answer, Date modified_answer,
 				Question question, EnumList enumlist) {
 			super();

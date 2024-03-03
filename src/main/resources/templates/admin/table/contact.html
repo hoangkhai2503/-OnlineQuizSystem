@@ -41,7 +41,9 @@
 						<h5 class="card-header">Contact Table</h5>
 						<br>
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+						<a th:href="@{'/admin/addForm/contact'}">
 							<input class="btn btn-primary" type="submit" value=" Add New "></input>
+						</a>
 
 							<input class="btn btn-primary" type="submit" value=" Filter "
 								style="margin-left: 20px;float:right"></input>
@@ -69,10 +71,10 @@
 									<thead>
 										<tr>
 											<th>Id</th>
-											<th>Student Name</th>
+											<th>Contact Name</th>
 											<th>Phone</th>
 											<th>Address</th>
-											<th>Created</th>
+											<th>Modified</th>
 											<th>Status</th>
 											<th>Action</th>
 										</tr>
@@ -85,7 +87,15 @@
 											<td th:text="${contact.address_contact}"></td>
 										    <td th:text="${#dates.format(contact.modified_contact, 'dd-MM-yyyy')}"></td>
 											<td th:text="${contact.enumList.name}"></td>
-											<td>Edit | Delete</td>
+											<td>
+											<a th:href="@{'/admin/editForm/contact/'+${contact.id_contact}}">
+											Edit
+											<a>
+											 | 
+											<a th:href="@{'/admin/deleteContact/'+${contact.id_contact}}">
+											 Delete
+											</a>
+											</td>
 										</tr>
 										
 									</tbody>

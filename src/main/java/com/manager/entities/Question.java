@@ -38,6 +38,17 @@ public class Question implements java.io.Serializable{
 		}
 
 
+		public Question(String name_question, Test test, Date created_question,
+				Date modified_question, EnumList enumlist) {
+			super();
+			this.name_question = name_question;
+			this.test = test;
+			this.created_question = created_question;
+			this.modified_question = modified_question;
+			this.enumlist = enumlist;
+		}
+		
+		
 		public Question(Integer id_question, String name_question, Test test, Date created_question,
 				Date modified_question, EnumList enumlist) {
 			super();

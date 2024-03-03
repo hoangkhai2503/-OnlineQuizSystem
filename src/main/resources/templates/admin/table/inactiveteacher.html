@@ -14,14 +14,14 @@
 			<div class="row">
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="page-header">
-						<h2 class="pageheader-title">Variable Table</h2>
+						<h2 class="pageheader-title">Recycle Bin</h2>
 						<p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit
 							amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
 						<div class="page-breadcrumb">
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-									<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Tables</a></li>
+									<li class="breadcrumb-item"><a th:href="@{/admin/teacher}" class="breadcrumb-link">Tables</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Data Tables</li>
 								</ol>
 							</nav>
@@ -38,14 +38,14 @@
 				<!-- ============================================================== -->
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="card">
-						<h5 class="card-header">Variable Table</h5>
+						<h5 class="card-header">Recycle Bin</h5>
 						<br>
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-						
-							<a th:href="@{/admin/addVariable}" >
-							<input class="btn btn-primary" type="submit" value=" Add New "></input>
+							
+							<a th:href="@{/admin/teacher}" >
+							<input class="btn btn-primary" type="submit" value=" Back "></input>
 							</a>
-
+							
 							<input class="btn btn-primary" type="submit" value=" Filter "
 								style="margin-left: 20px;float:right"></input>
 
@@ -72,36 +72,39 @@
 									<thead>
 										<tr>
 											<th>Id</th>
-											<th>Name</th>
-											<th>Image</th>
-											<th>Code</th>
+											<th>Teacher Name</th>
+											<th>Email</th>
+											<th>Phone</th>
+											<th>Status</th>
 											<th>Action</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="variable: ${variables}">
-											<td th:text="${variable.id_variable}"></td>
-											<td th:text="${variable.name_variable}"></td>
-											<td th:text="${variable.image_variable}"></td>
-											<td th:text="${variable.code_variable}"></td>
+										<tr th:each="teacher: ${teachers}">
+											<td th:text="${teacher.id_teacher}"></td>
+											<td th:text="${teacher.fullname_teacher}"></td>
+											<td th:text="${teacher.email_teacher}"></td>
+											<td th:text="${teacher.phone_teacher}"></td>
+											<td th:text="${teacher.enumlist.name}"></td>
 											<td>
-											<a th:href="@{'/admin/editVariable/'+${variable.id_variable}}">
+											<a th:href="@{'/admin/editTeacher/'+${teacher.id_teacher}}">
 											Edit
 											<a>
 											 | 
-											<a th:href="@{'/admin/deleteVariable/'+${variable.id_variable}}">
+											<a th:href="@{'/admin/deleteTeacher/'+${teacher.id_teacher}}">
 											 Delete
 											</a>
 											</td>
 										</tr>
-
+										
 									</tbody>
 									<tfoot>
 										<tr>
 											<th>Id</th>
-											<th>Name</th>
-											<th>Image</th>
-											<th>Code</th>
+											<th>Teacher Name</th>
+											<th>Email</th>
+											<th>Phone</th>
+											<th>Status</th>
 											<th>Action</th>
 										</tr>
 									</tfoot>
@@ -114,7 +117,7 @@
 				<!-- end basic table  -->
 				<!-- ============================================================== -->
 			</div>
-
+			
 		</div>
 		<!-- ============================================================== -->
 	</div>
