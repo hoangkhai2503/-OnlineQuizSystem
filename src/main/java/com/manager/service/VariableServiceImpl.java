@@ -14,5 +14,10 @@ public class VariableServiceImpl implements VariableService{
 		// TODO Auto-generated method stub
 		return variableRepository.findAll();
 	}
+	@Override
+	public Variable findByCode_variable(String code_variable) {
+		
+		return variableRepository.findByCode_variable(code_variable);
+	}
 
 }

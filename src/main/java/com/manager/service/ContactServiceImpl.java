@@ -14,5 +14,15 @@ public class ContactServiceImpl implements ContactService{
 		// TODO Auto-generated method stub
 		return contactRepository.findAll();
 	}
+	@Override
+	public boolean save(Contact contact) {
+		try {
+			contactRepository.save(contact);
+			return true;
+		}catch (Exception e){
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 }

@@ -14,5 +14,10 @@ public class EnumListServiceImpl implements EnumListService{
 		// TODO Auto-generated method stub
 		return enumlistRepository.findAll();
 	}
+	@Override
+	public EnumList findById(int id) {
+		// TODO Auto-generated method stub
+		return enumlistRepository.findById(id).get();
+	}
 
 }
