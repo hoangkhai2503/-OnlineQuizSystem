@@ -14,5 +14,15 @@ public class ClassServiceImpl implements ClassService{
 		// TODO Auto-generated method stub
 		return classRepository.findAll();
 	}
+	@Override
+	public boolean save(Class gbclass) {
+		try {
+			classRepository.save(gbclass);
+			return true;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 }

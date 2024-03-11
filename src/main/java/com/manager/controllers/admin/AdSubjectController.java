@@ -36,7 +36,7 @@ public class AdSubjectController {
 
 	// add post
 	@RequestMapping(value = { "addSubject" }, method = RequestMethod.POST)
-	public String register(@ModelAttribute("subject") Subject subject,
+	public String AddSubject(@ModelAttribute("subject") Subject subject,
 			RedirectAttributes redirectAttributes) {
 		//subject.setFullname("Null");
 		 // Lấy ngày hiện tại

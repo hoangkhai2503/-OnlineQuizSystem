@@ -95,5 +95,13 @@ public class Superadmin implements java.io.Serializable{
 			this.enumlist = enumlist;
 		}
 
+
+		public Set<Role> getRoles() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+
+
 		
 }

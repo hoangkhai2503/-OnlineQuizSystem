@@ -1,5 +1,5 @@
 <html xmlns:th="http://www.thymeleaf.org"
-	th:replace="admin/layout/mylayout :: mainContent('Fontawesome Icons', ~{this :: .containerReplace})">
+	th:replace="admin/layout/mylayout :: mainContent('Send Mail', ~{this :: .containerReplace})">
 
 <head>
 	<title></title>
@@ -20,25 +20,17 @@
 					</div>
 					<div class="aside-nav collapse">
 						<ul class="nav">
-							<li><a href="#"><span class="icon"><i class="fas fa-fw fa-inbox"></i></span>Inbox<span
-										class="badge badge-primary float-right">8</span></a></li>
+							<!--<li><a href="#"><span class="icon"><i class="fas fa-fw fa-inbox"></i></span>Inbox<span
+										class="badge badge-primary float-right">8</span></a></li>-->
 							<li class="active"><a href="#"><span class="icon"><i
 											class="fas fa-fw  fa-envelope"></i></span>Sent Mail</a></li>
-							<li><a href="#"><span class="icon"><i
+							<!--		<li><a href="#"><span class="icon"><i
 											class="fas fa-fw fa-briefcase"></i></span>Important<span
-										class="badge badge-secondary float-right">4</span></a></li>
+										class="badge badge-secondary float-right">4</span></a></li>-->
 							<li><a href="#"><span class="icon"><i class="fas fa-fw fa-file"></i></span>Drafts</a></li>
-							<li><a href="#"><span class="icon"><i class="fas fa-fw fa-star"></i></span>Tags</a></li>
+							<!--							<li><a href="#"><span class="icon"><i class="fas fa-fw fa-star"></i></span>Tags</a></li>-->
 							<li><a href="#"><span class="icon"><i class="fas fa-fw fa-trash"></i></span>Trash</a></li>
-						</ul><span class="title">Labels</span>
-						<ul class="nav nav-pills nav-stacked">
-							<li><a href="#"><i class="m-r-10 mdi mdi-label text-secondary"></i>
-									Important </a></li>
-							<li><a href="#">
-									<i class="m-r-10 mdi mdi-label text-primary"></i> Business </a></li>
-							<li><a href="#"> <i class="m-r-10 mdi mdi-label text-brand"></i>
-									Inspiration </a></li>
-						</ul>
+
 					</div>
 				</div>
 			</aside>
@@ -51,7 +43,7 @@
 						<div class="form-group row pt-0">
 							<label class="col-md-1 control-label">To:</label>
 							<div class="col-md-11">
-								<select class="js-example-basic-multiple" multiple="multiple">
+								<select class="form-control">
 									<option value="Yellow" selected="selected">Yellow</option>
 									<option value="White">White</option>
 									<option value="Blue" selected="selected">Blue</option>
@@ -63,12 +55,10 @@
 						<div class="form-group row pt-2">
 							<label class="col-md-1 control-label">Cc</label>
 							<div class="col-md-11">
-								<select class="js-example-basic-multiple" multiple="multiple">
-									<option value="Alabama">Alabama</option>
-									<option value="Alaska" selected="selected">Alaska</option>
-									<option value="Melbourne">Melbourne</option>
-									<option value="Victoria" selected="selected">Victoria</option>
-									<option value="Newyork">Newyork</option>
+								<select class="form-control">
+									<option value="Yellow" selected="selected">Yellow</option>
+									<option value="White">White</option>
+									<option value="Blue" selected="selected">Blue</option>
 								</select>
 							</div>
 						</div>
@@ -77,26 +67,42 @@
 						<div class="form-group row pt-2">
 							<label class="col-md-1 control-label">Subject</label>
 							<div class="col-md-11">
-								<input class="form-control" type="text">
+								<input class="form-control" type="text" placeholder="Subject">
+							</div>
+						</div>
+					</div>
+					<div class="subject">
+						<div class="form-group row pt-2">
+							<label class="col-md-1 control-label">Descriptions</label>
+							<div class="col-md-11">
+								<textarea class="form-control" id="summernote" name="editordata" rows="19"
+									placeholder="Write Descriptions"></textarea>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="email editor">
+				<!--<div class="email editor">
 					<div class="col-md-12 p-0">
 						<div class="form-group">
 							<label class="control-label sr-only" for="summernote">Descriptions </label>
-							<textarea class="form-control" id="summernote" name="editordata" rows="6"
-								placeholder="Write Descriptions"></textarea>
+							<div class="col-md-11">
+								<textarea class="form-control" id="summernote" name="editordata" rows="19"
+									placeholder="Write Descriptions"></textarea>
+							</div>
 						</div>
-					</div>
+					</div>-->
 					<div class="email action-send">
 						<div class="col-md-12 ">
 							<div class="form-group">
-								<button class="btn btn-primary btn-space" type="submit"><i class="icon s7-mail"></i>
-									Send</button>
-								<button class="btn btn-secondary btn-space" type="button"><i class="icon s7-close"></i>
-									Cancel</button>
+								<input class="btn btn-primary btn-space" type="submit" value="Send"><i
+									class="icon s7-mail"></i>
+								</input>
+								<input class="btn btn-secondary btn-space" type="button" value="Cancel"><i
+									class="icon s7-close"></i>
+								</input>
+								<input class="btn btn-warning btn-space" type="submit" value="Drafts"><i
+									class="icon s7-mail"></i>
+								</input>
 							</div>
 						</div>
 					</div>
@@ -106,5 +112,5 @@
 		<!-- ============================================================== -->
 	</div>
 </body>
-	
+
 </html>

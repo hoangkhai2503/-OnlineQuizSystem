@@ -1,4 +1,5 @@
-<html xmlns:th="http://www.thymeleaf.org" th:fragment="mainContent(title, content)">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" th:fragment="mainContent(title, content)"
+>
 
 <head>
 	<meta charset="utf-8">
@@ -21,7 +22,7 @@
 		<!-- ============================================================== -->
 		<div class="dashboard-header">
 			<nav class="navbar navbar-expand-lg bg-white fixed-top">
-				<a class="navbar-brand" th:href="@{/admin/home}">ADMIN SYSTEM</a>
+				<a class="navbar-brand" th:href="@{/admin/index}">ADMIN SYSTEM</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
 					aria-label="Toggle navigation">
@@ -51,7 +52,7 @@
 							<div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
 								aria-labelledby="navbarDropdownMenuLink2">
 								<div class="nav-user-info">
-									<h5 class="mb-0 text-white nav-user-name">Name Admin </h5>
+									<h5 class="mb-0 text-white nav-user-name"></h5>
 									<span class="status"></span><span class="ml-2">Chuc Vu</span>
 								</div>
 								<a class="dropdown-item" th:href="@{/admin/profile}"><i
@@ -83,12 +84,13 @@
 							<li class="nav-divider">
 								Menu
 							</li>
+							
 							<li class="nav-item ">
 								<a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false"
 									data-target="#submenu-1" aria-controls="submenu-1"><i
 										class="fa fa-fw fa-user-circle"></i>Dashboard <span
 										class="badge badge-success">6</span></a>
-								<div id="submenu-1" class="collapse submenu" style="">
+								<div id="submenu-1" class="collapse submenu">
 									<ul class="nav flex-column">
 										<li class="nav-item">
 											<a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
@@ -110,6 +112,7 @@
 									</ul>
 								</div>
 							</li>
+						
 							<li class="nav-item">
 								<a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
 									data-target="#submenu-2" aria-controls="submenu-2"><i
