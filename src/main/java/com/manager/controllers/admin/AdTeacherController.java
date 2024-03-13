@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.manager.entities.Contact;
 import com.manager.entities.Teacher;
@@ -32,6 +33,14 @@ public class AdTeacherController {
 	public String TableTeacher(ModelMap modelMap) {
 		modelMap.put("teachers", teacherService.findAllTeacherActive());
 		modelMap.put("enumListes", enumListService.findTypeStatusOfTeacher());
+		return "admin/table/teacher";
+	}
+	
+	@RequestMapping(value = { "searchTeacherByKeyword" }, method = RequestMethod.GET)
+	public String searchTeacherByKeyword(@RequestParam("keyword") String keyword, ModelMap modelMap) {
+		modelMap.put("teachers", teacherService.searchTeacherByKeyword(keyword));
+		System.out.println(keyword);
+		modelMap.put("keyword", keyword);
 		return "admin/table/teacher";
 	}
 	

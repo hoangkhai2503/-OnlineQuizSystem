@@ -67,4 +67,11 @@ public class AdContactController {
 		return "redirect:/admin/contact";
 	}
 
+	@RequestMapping(value = { "searchContactByKeyword" }, method = RequestMethod.GET)
+	public String searchTeacherByKeyword(@RequestParam("keyword") String keyword, ModelMap modelMap) {
+		modelMap.put("contacts", contactService.searchContactByKeyword(keyword));
+		modelMap.put("keyword", keyword);
+		return "admin/table/contact";
+	}
+	
 }

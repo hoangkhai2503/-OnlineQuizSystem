@@ -16,4 +16,6 @@ public interface TeacherService {
 	public Teacher findById(int id);
 	
 	public boolean delete(int id);
+	
+	public List<Teacher> searchTeacherByKeyword(String keyword);
 }

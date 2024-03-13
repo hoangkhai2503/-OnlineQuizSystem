@@ -1,5 +1,7 @@
 package com.manager.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +39,11 @@ public class NewsServiceImpl implements NewsService{
 			e.printStackTrace();
 			return false;
 		}
+	}
+	@Override
+	public List<News> findAllNewsPublicity() {
+		// TODO Auto-generated method stub
+		return newsRepository.findAllNewsPublicity();
 	}
 
 }

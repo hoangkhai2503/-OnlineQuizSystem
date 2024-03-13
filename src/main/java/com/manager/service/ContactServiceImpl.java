@@ -1,5 +1,7 @@
 package com.manager.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +42,12 @@ public class ContactServiceImpl implements ContactService{
 	@Override
 	public Contact findById(int id) {
 		return contactRepository.findById(id).get();
+	}
+
+	@Override
+	public List<Contact> searchContactByKeyword(String keyword) {
+		// TODO Auto-generated method stub
+		return contactRepository.searchContactByKeyword(keyword);
 	}
 
 }
