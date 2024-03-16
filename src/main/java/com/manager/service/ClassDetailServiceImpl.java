@@ -14,5 +14,20 @@ public class ClassDetailServiceImpl implements ClassDetailService{
 		// TODO Auto-generated method stub
 		return classDetailRepository.findAll();
 	}
+	@Override
+	public boolean save(ClassDetail classDetail) {
+		try {
+			classDetailRepository.save(classDetail);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	@Override
+	public int findIdLatest() {
+		// TODO Auto-generated method stub
+		return classDetailRepository.findIdLatest();
+	}
 
 }

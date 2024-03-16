@@ -28,6 +28,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.manager.helpers.FileHelper;
 import com.manager.entities.Answer;
 import com.manager.entities.Question;
+import com.manager.entities.Test;
 import com.manager.service.AnswerService;
 import com.manager.service.EnumListService;
 import com.manager.service.QuestionService;
@@ -233,11 +234,12 @@ public class AdQuestionController {
 			@RequestParam("select[]") List<String> listIdQuestion,
 			RedirectAttributes redirectAttributes) 
 	{
+		Test test = testService.findId(question.getTest().getId_test());
 		for (String idQuestionString : listIdQuestion) {
 			int idQuestion = Integer.parseInt(idQuestionString);
 			if (questionService.save(new Question(idQuestion,
 					questionService.findId(idQuestion).getName_question(), 
-					question.getTest(), 
+					test, 
 					questionService.findId(idQuestion).getCreated_question(),
 					questionService.findId(idQuestion).getModified_question(),
 					questionService.findId(idQuestion).getEnumlist()))) {
@@ -246,6 +248,27 @@ public class AdQuestionController {
     			System.out.print("\nFailed");
     		}	
 		}
+		System.out.print(test.getEnumlist().getId());
+		if(test.getEnumlist().getId() == 12 || test.getEnumlist().getId() == 13) {
+			int totalQuestion = 0;
+			List<Question> questions = (List<Question>) questionService.findAll();
+			for(Question questionItem : questions) {
+				if(questionItem.getTest().getId_test() == test.getId_test()) {
+					totalQuestion++;
+				}
+			}
+			
+			System.out.print("\nSo cau:"+totalQuestion);
+			System.out.print("\nTong:"+test.getTypetest().getQuantityQuestion());
+			if(totalQuestion == test.getTypetest().getQuantityQuestion()) {
+				test.setEnumlist(enumListService.find(12));
+				testService.save(test);
+			}else {
+				test.setEnumlist(enumListService.find(13));
+				testService.save(test);
+			}
+		}
+		
 		return "redirect:/admin/question";
 	}
 	

@@ -9,7 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import jakarta.persistence.*;
 @Entity
 @Table(name = "gb_class")
-public class Class implements java.io.Serializable{
+public class _Class implements java.io.Serializable{
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    @Column(name = "id_class")
@@ -29,16 +29,20 @@ public class Class implements java.io.Serializable{
 	    private Teacher teacher;
 	    
 	    @ManyToOne
+	    @JoinColumn(name = "schoolyear_id_class")
+	    private SchoolYear schoolYear;
+	    
+	    @ManyToOne
 	    @JoinColumn(name = "status_id_class")
 	    private EnumList enumList;
 
 	    
-		public Class() {
+		public _Class() {
 			super();
 		}
 
 
-		public Class(Integer id_class, String name_class, Date created_class, Date modified_class, Teacher teacher,
+		public _Class(Integer id_class, String name_class, Date created_class, Date modified_class, Teacher teacher, SchoolYear schoolYear,
 				EnumList enumList) {
 			super();
 			this.id_class = id_class;
@@ -46,6 +50,7 @@ public class Class implements java.io.Serializable{
 			this.created_class = created_class;
 			this.modified_class = modified_class;
 			this.teacher = teacher;
+			this.schoolYear = schoolYear;
 			this.enumList = enumList;
 		}
 
@@ -107,6 +112,16 @@ public class Class implements java.io.Serializable{
 
 		public void setEnumList(EnumList enumList) {
 			this.enumList = enumList;
+		}
+
+
+		public SchoolYear getSchoolYear() {
+			return schoolYear;
+		}
+
+
+		public void setSchoolYear(SchoolYear schoolYear) {
+			this.schoolYear = schoolYear;
 		}
 		
 }

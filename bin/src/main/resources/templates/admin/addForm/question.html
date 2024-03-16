@@ -1,0 +1,186 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/layout/mylayout :: mainContent('Form', ~{this :: .containerReplace})">
+
+<head>
+	<title></title>
+</head>
+
+<body>
+	<div class="containerReplace">
+		<div class="container-fluid  dashboard-content">
+			<!-- ============================================================== -->
+			<!-- pageheader -->
+			<!-- ============================================================== -->
+			<div class="row">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+					<div class="page-header">
+						<h2 class="pageheader-title">Form Add Question </h2>
+						<p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit
+							amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+						<div class="page-breadcrumb">
+							<nav aria-label="breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+									<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Forms</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Form Validations</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ============================================================== -->
+			<!-- end pageheader -->
+			<!-- ============================================================== -->
+			<div class="row">
+				<!-- ============================================================== -->
+				<!-- valifation types -->
+				<!-- ============================================================== -->
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+					<div class="card">
+						<h5 class="card-header">Add New Question</h5>
+						<div class="card-body">
+							<form method="post" th:action="@{/admin/addQuestion}" enctype="multipart/form-data">					
+								<div class="form-group row">
+									<label class="col-12 col-sm-3 col-form-label text-sm-right">Question</label>
+									<div class="col-12 col-sm-8 col-lg-6">
+										<textarea required="" class="form-control" th:field="${question.name_question}"></textarea>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-12 col-sm-3 col-form-label text-sm-right">1st Answer</label>
+									<div class="col-12 col-sm-8 col-lg-6">
+										<div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <label class="custom-control custom-radio">
+                                                        <input type="radio" class="custom-control-input" name="correct" value="Answer 1" id="Answer 1"><span class="custom-control-label"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <input type="text" class="form-control" name="answer1">
+                                        </div>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-12 col-sm-3 col-form-label text-sm-right">2st Answer</label>
+									<div class="col-12 col-sm-8 col-lg-6">
+										<div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <label class="custom-control custom-radio">
+                                                        <input type="radio" class="custom-control-input" name="correct" value="Answer 2" id="Answer 2"><span class="custom-control-label"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <input type="text" class="form-control" name="answer2">
+                                        </div>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-12 col-sm-3 col-form-label text-sm-right">3st Answer</label>
+									<div class="col-12 col-sm-8 col-lg-6">
+										<div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <label class="custom-control custom-radio">
+                                                        <input type="radio" class="custom-control-input" name="correct" value="Answer 3" id="Answer 3"><span class="custom-control-label"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <input type="text" class="form-control" name="answer3">
+                                        </div>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-12 col-sm-3 col-form-label text-sm-right">4st Answer</label>
+									<div class="col-12 col-sm-8 col-lg-6">
+										<div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <label class="custom-control custom-radio">
+                                                        <input type="radio" class="custom-control-input" name="correct" value="Answer 4" id="Answer 4"><span class="custom-control-label"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <input type="text" class="form-control" name="answer4">
+                                        </div>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-12 col-sm-3 col-form-label text-sm-right">Image</label>
+									<div class="col-12 col-sm-8 col-lg-6">
+										<div class="custom-file mb-3">
+                                                <input type="file" class="custom-file-input" name="file">
+                                                <label class="custom-file-label" for="customFile">File Input(Optional)</label>
+                                            </div>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-12 col-sm-3 col-form-label text-sm-right">Test</label>
+									<div class="col-12 col-sm-8 col-lg-6">
+										 <div class="form-group">
+                                                <select class="form-control" th:field="${question.test.id_test}">
+                                                    <option th:each="test : ${tests}" 
+														th:value="${test.id_test}" th:text="${test.name_test}">Default select</option>
+                                                </select>
+                                            </div>
+									</div>
+								</div>
+								
+								<div class="form-group row text-right">
+									<div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
+										<button type="submit" class="btn btn-space btn-primary">Submit</button>
+										<button class="btn btn-space btn-secondary">Cancel</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+					<div class="card">
+						<h5 class="card-header">Add By Excel File</h5>
+						<div class="card-body">
+							<form method="post" th:action="@{/admin/addQuestionByExcel}" enctype="multipart/form-data">														
+								<div class="form-group row">
+									<label class="col-12 col-sm-3 col-form-label text-sm-right">File</label>
+									<div class="col-12 col-sm-8 col-lg-6">
+										<div class="custom-file mb-3">
+                                                <input type="file" class="custom-file-input" id="customFile" name="file">
+                                                <label class="custom-file-label" for="customFile">Excel(.xlsx)</label>
+                                            </div>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-12 col-sm-3 col-form-label text-sm-right">Test</label>
+									<div class="col-12 col-sm-8 col-lg-6">
+										 <div class="form-group">
+                                                <select class="form-control" th:field="${question.test.id_test}">
+                                                    <option th:each="test : ${tests}" 
+														th:value="${test.id_test}" th:text="${test.name_test}">Default select</option>
+                                                </select>
+                                            </div>
+									</div>
+								</div>
+								<div class="form-group row text-right">
+									<div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
+										<button type="submit" class="btn btn-space btn-primary">Submit</button>
+										<button class="btn btn-space btn-secondary">Cancel</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<!-- ============================================================== -->
+				<!-- end valifation types -->
+				<!-- ============================================================== -->
+			</div>
+
+		</div>
+		<!-- ============================================================== -->
+	</div>
+</body>
+
+</html>

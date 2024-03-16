@@ -8,4 +8,6 @@ public interface AnswerService {
 	public boolean save(Answer answer);
 	
 	public Iterable<Answer> findByIdQuestion(int id_question);
+	
+	public Answer findId(int id_answer);
 }

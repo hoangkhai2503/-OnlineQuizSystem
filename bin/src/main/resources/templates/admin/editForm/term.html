@@ -1,0 +1,83 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/layout/mylayout :: mainContent('Form', ~{this :: .containerReplace})">
+
+<head>
+	<title></title>
+</head>
+
+<body>
+	<div class="containerReplace">
+		<div class="container-fluid  dashboard-content">
+			<!-- ============================================================== -->
+			<!-- pageheader -->
+			<!-- ============================================================== -->
+			<div class="row">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+					<div class="page-header">
+						<h2 class="pageheader-title">Edit Term Form </h2>
+						<p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit
+							amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+						<div class="page-breadcrumb">
+							<nav aria-label="breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+									<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Forms</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Edit Code Test Form</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ============================================================== -->
+			<!-- end pageheader -->
+			<!-- ============================================================== -->
+			<div class="row">
+				<!-- ============================================================== -->
+				<!-- valifation types -->
+				<!-- ============================================================== -->
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+					<div class="card">
+						<h5 class="card-header">Add Contact</h5>
+						<div class="card-body">
+							<form id="validationform" data-parsley-validate="" novalidate="" method="post" th:action="@{/admin/editTerm}">
+								
+								<div class="form-group row">
+									<label class="col-12 col-sm-3 col-form-label text-sm-right">Name</label>
+									<div class="col-12 col-sm-8 col-lg-6">
+										<input type="text" required="" placeholder="Type name here..."
+											class="form-control" th:field="${term.name_term}">
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label class="col-12 col-sm-3 col-form-label text-sm-right">Status</label>
+									<div class="col-12 col-sm-8 col-lg-6">
+										<select  class="form-control" th:field="${term.enumlist}">
+											<option th:each="enumList : ${enumListes}" th:value="${enumList.id}" th:text="${enumList.name}">Volvo</option>
+										</select>
+									</div>
+								</div>
+								
+								<div class="form-group row text-right">
+									<div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
+										<button type="submit" class="btn btn-space btn-primary">Submit</button>
+										<button class="btn btn-space btn-secondary">Cancel</button>
+									</div>
+									<input type="hidden" th:field="${term.id_term}">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<!-- ============================================================== -->
+				<!-- end valifation types -->
+				<!-- ============================================================== -->
+			</div>
+
+		</div>
+		<!-- ============================================================== -->
+	</div>
+</body>
+
+</html>

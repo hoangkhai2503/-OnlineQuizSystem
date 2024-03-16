@@ -19,7 +19,7 @@ public class Typetest implements java.io.Serializable{
 	    private String name_typetest;
 
 	    @Column(name = "time_typetest")
-	    private String time_typetest;
+	    private int time_typetest;
 
 	    @Column(name = "quantityquestion")
 	    private Integer quantityQuestion;
@@ -35,7 +35,7 @@ public class Typetest implements java.io.Serializable{
 			super();
 		}
 
-		public Typetest(Integer id_typetest, String name_typetest, String time_typetest, Integer quantityQuestion,
+		public Typetest(Integer id_typetest, String name_typetest, int time_typetest, Integer quantityQuestion,
 				Integer scoreFactor, EnumList enumList) {
 			super();
 			this.id_typetest = id_typetest;
@@ -62,11 +62,11 @@ public class Typetest implements java.io.Serializable{
 			this.name_typetest = name_typetest;
 		}
 
-		public String getTime_typetest() {
+		public int getTime_typetest() {
 			return time_typetest;
 		}
 
-		public void setTime_typetest(String time_typetest) {
+		public void setTime_typetest(int time_typetest) {
 			this.time_typetest = time_typetest;
 		}
 

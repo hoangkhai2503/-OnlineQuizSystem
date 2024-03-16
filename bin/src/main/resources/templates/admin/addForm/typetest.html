@@ -1,0 +1,96 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/layout/mylayout :: mainContent('Form', ~{this :: .containerReplace})">
+
+<head>
+	<title></title>
+</head>
+
+<body>
+	<div class="containerReplace">
+		<div class="container-fluid  dashboard-content">
+			<!-- ============================================================== -->
+			<!-- pageheader -->
+			<!-- ============================================================== -->
+			<div class="row">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+					<div class="page-header">
+						<h2 class="pageheader-title">Add Contact Form </h2>
+						<p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit
+							amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+						<div class="page-breadcrumb">
+							<nav aria-label="breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+									<li class="breadcrumb-item"><a th:href="@{'/admin/typetest'}" class="breadcrumb-link">Forms</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Add Type Test </li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ============================================================== -->
+			<!-- end pageheader -->
+			<!-- ============================================================== -->
+			<div class="row">
+				<!-- ============================================================== -->
+				<!-- valifation types -->
+				<!-- ============================================================== -->
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+					<div class="card">
+						<h5 class="card-header">Add Contact</h5>
+						<div class="card-body">
+							<form id="validationform" data-parsley-validate="" novalidate="" method="post" th:action="@{/admin/addTypetest}">
+								<div class="form-group row">
+									<label class="col-12 col-sm-3 col-form-label text-sm-right">Name</label>
+									<div class="col-12 col-sm-8 col-lg-6">
+										<input type="text" required="" placeholder="Type name here..."
+											class="form-control" th:field="${typetest.name_typetest}">
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label class="col-12 col-sm-3 col-form-label text-sm-right">Timer</label>
+									<div class="col-12 col-sm-8 col-lg-6">
+										<input type="text" required="" data-parsley-minlength="6"
+											placeholder="Type time here..." class="form-control" th:field="${typetest.time_typetest}">
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label class="col-12 col-sm-3 col-form-label text-sm-right">Quantity Question</label>
+									<div class="col-12 col-sm-8 col-lg-6">
+										<input type="number" required="" data-parsley-maxlength="6"
+											placeholder="Type quantity here..." class="form-control" th:field="${typetest.quantityQuestion}">
+									</div>
+								</div>
+								
+								<div class="form-group row">
+									<label class="col-12 col-sm-3 col-form-label text-sm-right">Score Factor</label>
+									<div class="col-12 col-sm-8 col-lg-6">
+										<input type="number" required="" data-parsley-maxlength="6"
+											placeholder="Score Factor here..." class="form-control" th:field="${typetest.scoreFactor}">
+									</div>
+								</div>
+								
+								<div class="form-group row text-right">
+									<div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
+										<button type="submit" class="btn btn-space btn-primary">Submit</button>
+										<button class="btn btn-space btn-secondary">Cancel</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<!-- ============================================================== -->
+				<!-- end valifation types -->
+				<!-- ============================================================== -->
+			</div>
+
+		</div>
+		<!-- ============================================================== -->
+	</div>
+</body>
+
+</html>

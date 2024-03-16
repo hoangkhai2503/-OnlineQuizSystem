@@ -25,7 +25,7 @@ public class TestDetail implements java.io.Serializable{
 	    private Student student;
 
 	    @Column(name = "score_testdetail")
-	    private BigDecimal  score_testdetail;
+	    private double  score_testdetail;
 	    
 	    @DateTimeFormat(pattern = "dd/MM/yyyy")
 	    @Column(name = "created_testdetail")
@@ -43,7 +43,7 @@ public class TestDetail implements java.io.Serializable{
 			super();
 		}
 
-		public TestDetail(Integer id_testdetail, Test test, Student student, BigDecimal score_testdetail,
+		public TestDetail(Integer id_testdetail, Test test, Student student, double score_testdetail,
 				Date created_testdetail, Date modified_testdetail, EnumList enumList) {
 			super();
 			this.id_testdetail = id_testdetail;
@@ -79,11 +79,11 @@ public class TestDetail implements java.io.Serializable{
 			this.student = student;
 		}
 
-		public BigDecimal getScore_testdetail() {
+		public double getScore_testdetail() {
 			return score_testdetail;
 		}
 
-		public void setScore_testdetail(BigDecimal score_testdetail) {
+		public void setScore_testdetail(double score_testdetail) {
 			this.score_testdetail = score_testdetail;
 		}
 

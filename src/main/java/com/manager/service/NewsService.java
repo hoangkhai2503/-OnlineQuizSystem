@@ -1,5 +1,7 @@
 package com.manager.service;
 
+import java.util.List;
+
 import com.manager.entities.News;
 
 public interface NewsService {
@@ -10,4 +12,6 @@ public interface NewsService {
 	public News findById(int id);
 	
 	public boolean delete(int id);
+	
+	public List<News> findAllNewsPublicity();
 }

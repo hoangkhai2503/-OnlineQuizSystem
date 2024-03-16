@@ -86,7 +86,12 @@
 											<th:block th:each="question: ${questions}">
 	            								<tr>
 													<td th:text="${question.id_question}"></td>
-													<td th:text="${question.name_question}"></td>
+													<td>
+														<th:block th:text="${question.name_question}"></th:block><br>
+														<th:block th:if="${question.image_question != null}">
+														<img th:src="@{'/images/' + ${question.image_question}}" width="440	" height="200">
+														</th:block>
+													</td>
 													<td th:text="${question.test.name_test}"></td>
 													<td th:text="${#dates.format(question.created_question, 'dd-MM-yyyy')}"></td>
 													<td th:text="${#dates.format(question.modified_question, 'dd-MM-yyyy')}"></td>
@@ -110,7 +115,12 @@
 											<th:block th:each="question: ${questions}">
 	            								<tr>
 													<td th:text="${question.id_question}"></td>
-													<td th:text="${question.name_question}"></td>
+													<td>
+														<th:block th:text="${question.name_question}"></th:block><br>
+														<th:block th:if="${question.image_question != null}">
+														<img th:src="@{'/images/' + ${question.image_question}}" width="440	" height="200">
+														</th:block>
+													</td>
 													<td th:text="${question.test.name_test}"></td>
 													<td th:text="${#dates.format(question.created_question, 'dd-MM-yyyy')}"></td>
 													<td th:text="${#dates.format(question.modified_question, 'dd-MM-yyyy')}"></td>
