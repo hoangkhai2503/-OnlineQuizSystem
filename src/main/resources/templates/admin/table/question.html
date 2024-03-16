@@ -41,8 +41,17 @@
 						<h5 class="card-header">Statistics Result Table</h5>
 						<br>
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-							<input class="btn btn-primary" type="submit" value=" Add New "></input>
-
+							<a class="btn btn-primary" th:href="@{'/admin/addQuestion'}">Add New</a>
+							<a class="btn btn-primary" th:href="@{'/admin/setQuestion'}">Set Question to Test</a>
+							
+							<th:block th:if="${showAnswer == 'Yes'}">
+            					<a class="btn btn-primary" th:href="@{'/admin/question'}">Hide Answer</a>
+        					</th:block>
+							<th:block th:if="${showAnswer == 'No'}">
+            					<a class="btn btn-primary" th:href="@{'/admin/questionAndAnswer'}">Show Answer</a>
+        					</th:block>
+							
+							
 							<input class="btn btn-primary" type="submit" value=" Filter "
 								style="margin-left: 20px;float:right"></input>
 
@@ -53,12 +62,7 @@
 								<option>Mercedes</option>
 								<option>Audi</option>
 							</select>
-							<input type="text" placeholder="Seach..." style="margin-left: 20px;padding:
-								 8px; border-color: gainsboro;border-radius: 5px;float:right">
-
-							<input type="text" placeholder="Seach..." style="margin-left: 20px;padding:
-								 8px; border-color: gainsboro;border-radius: 5px;float:right">
-
+						
 							<input type="text" placeholder="Seach..." style="margin-left: 20px;padding:
 								 8px; border-color: gainsboro;border-radius: 5px;float:right">
 
@@ -68,38 +72,54 @@
 								<table class="table table-striped table-bordered first">
 									<thead>
 										<tr>
-											<th>Id</th>
-											<th>Question Name</th>
-											<th>Test Name</th>
-											<th>Created</th>
-											<th>Modified</th>
-											<th>Status</th>
-											<th>Action</th>
+											<th width="5%">Id</th>
+											<th width="40%">Question Name</th>
+											<th width="15%">Test Name</th>
+											<th width="10%">Created</th>
+											<th width="10%">Modified</th>
+											<th width="10%">Status</th>
+											<th width="10%">Action</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="question: ${questions}">
-											<td th:text="${question.id_question}"></td>
-											<td th:text="${question.name_question}"></td>
-											<td th:text="${question.test.name_test}"></td>
-											<td th:text="${#dates.format(question.created_question, 'dd-MM-yyyy')}"></td>
-											<td th:text="${#dates.format(question.modified_question, 'dd-MM-yyyy')}"></td>
-											<td th:text="${question.enumlist.name}"></td>
-											<td>Edit | Delete</td>
-										</tr>
-
+										<th:block th:if="${showAnswer == 'Yes'}">
+											<th:block th:each="question: ${questions}">
+	            								<tr>
+													<td th:text="${question.id_question}"></td>
+													<td th:text="${question.name_question}"></td>
+													<td th:text="${question.test.name_test}"></td>
+													<td th:text="${#dates.format(question.created_question, 'dd-MM-yyyy')}"></td>
+													<td th:text="${#dates.format(question.modified_question, 'dd-MM-yyyy')}"></td>
+													<td th:text="${question.enumlist.name}"></td>
+													<td><a th:href="@{'/admin/editQuestion/'+ ${question.id_question}}">Edit</a> | Delete</td>
+												</tr>
+											<th:block th:each="answer: ${answers}" th:if="${answer.question.id_question == question.id_question}">
+	            								<tr>
+													<td>Answer</td>
+													<td th:text="${answer.name_answer}"></td>
+													<td></td>
+													<td th:text="${#dates.format(answer.created_answer, 'dd-MM-yyyy')}"></td>
+													<td th:text="${#dates.format(answer.modified_answer, 'dd-MM-yyyy')}"></td>
+													<td th:text="${answer.enumlist.name}"></td>
+													<td></td>
+												</tr>
+        									</th:block>
+        									</th:block>
+										</th:block>
+										<th:block th:if="${showAnswer == 'No'}">
+											<th:block th:each="question: ${questions}">
+	            								<tr>
+													<td th:text="${question.id_question}"></td>
+													<td th:text="${question.name_question}"></td>
+													<td th:text="${question.test.name_test}"></td>
+													<td th:text="${#dates.format(question.created_question, 'dd-MM-yyyy')}"></td>
+													<td th:text="${#dates.format(question.modified_question, 'dd-MM-yyyy')}"></td>
+													<td th:text="${question.enumlist.name}"></td>
+													<td><a th:href="@{'/admin/editQuestion/'+ ${question.id_question}}">Edit</a> | Delete</td>
+												</tr>
+        									</th:block>
+										</th:block>
 									</tbody>
-									<tfoot>
-										<tr>
-											<th>Id</th>
-											<th>Question Name</th>
-											<th>Test Name</th>
-											<th>Created</th>
-											<th>Modified</th>
-											<th>Status</th>
-											<th>Action</th>
-										</tr>
-									</tfoot>
 								</table>
 							</div>
 						</div>

@@ -41,7 +41,10 @@
 						<h5 class="card-header">Variable Table</h5>
 						<br>
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+						
+							<a th:href="@{/admin/addVariable}" >
 							<input class="btn btn-primary" type="submit" value=" Add New "></input>
+							</a>
 
 							<input class="btn btn-primary" type="submit" value=" Filter "
 								style="margin-left: 20px;float:right"></input>
@@ -81,7 +84,15 @@
 											<td th:text="${variable.name_variable}"></td>
 											<td th:text="${variable.image_variable}"></td>
 											<td th:text="${variable.code_variable}"></td>
-											<td>Edit | Delete</td>
+											<td>
+											<a th:href="@{'/admin/editVariable/'+${variable.id_variable}}">
+											Edit
+											<a>
+											 | 
+											<a th:href="@{'/admin/deleteVariable/'+${variable.id_variable}}">
+											 Delete
+											</a>
+											</td>
 										</tr>
 
 									</tbody>

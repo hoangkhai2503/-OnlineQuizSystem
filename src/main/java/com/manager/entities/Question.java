@@ -26,10 +26,13 @@ public class Question implements java.io.Serializable{
 	    @Column(name = "created_question")
 	    private Date created_question;
 	    
+	    @Column(name = "image_question")
+	    private String image_question;
+	    
 	    @Column(name = "modified_question")
 	    private Date modified_question;
 	    
-	    @ManyToOne
+		@ManyToOne
 	    @JoinColumn(name = "status_id_question")
 	    private EnumList enumlist;   
 	    
@@ -38,6 +41,16 @@ public class Question implements java.io.Serializable{
 		}
 
 
+		public Question(String name_question, Test test, Date created_question,
+				Date modified_question, EnumList enumlist) {
+			super();
+			this.name_question = name_question;
+			this.test = test;
+			this.created_question = created_question;
+			this.modified_question = modified_question;
+			this.enumlist = enumlist;
+		}
+
 		public Question(Integer id_question, String name_question, Test test, Date created_question,
 				Date modified_question, EnumList enumlist) {
 			super();
@@ -45,6 +58,18 @@ public class Question implements java.io.Serializable{
 			this.name_question = name_question;
 			this.test = test;
 			this.created_question = created_question;
+			this.modified_question = modified_question;
+			this.enumlist = enumlist;
+		}
+		
+		public Question(Integer id_question, String name_question, Test test, Date created_question,
+				String image_question, Date modified_question, EnumList enumlist) {
+			super();
+			this.id_question = id_question;
+			this.name_question = name_question;
+			this.test = test;
+			this.created_question = created_question;
+			this.image_question = image_question;
 			this.modified_question = modified_question;
 			this.enumlist = enumlist;
 		}
@@ -97,6 +122,16 @@ public class Question implements java.io.Serializable{
 
 		public void setModified_question(Date modified_question) {
 			this.modified_question = modified_question;
+		}
+		
+
+		public String getImage_question() {
+			return image_question;
+		}
+
+
+		public void setImage_question(String image_question) {
+			this.image_question = image_question;
 		}
 
 

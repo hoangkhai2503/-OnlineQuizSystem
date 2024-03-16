@@ -41,7 +41,10 @@
 						<h5 class="card-header">Variable Table</h5>
 						<br>
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-							<input class="btn btn-primary" type="submit" value=" Add New "></input>
+							
+							<a th:href="@{/admin/addTypeTest}" >
+							<input class="btn btn-primary" type="submit" value=" Add TypeTest "></input>
+							</a>
 
 							<input class="btn btn-primary" type="submit" value=" Filter "
 								style="margin-left: 20px;float:right"></input>
@@ -70,8 +73,9 @@
 										<tr>
 											<th>Id</th>
 											<th>Name</th>
-											<th>Quantity</th>
-											<th>Factor</th>
+											<th>Time</th>
+											<th>Quantity Question</th>
+											<th>Score Factor</th>
 											<th>Status</th>
 											<th>Action</th>
 										</tr>
@@ -80,10 +84,19 @@
 										<tr th:each="typetest: ${typetests}">
 											<td th:text="${typetest.id_typetest}"></td>
 											<td th:text="${typetest.name_typetest}"></td>
+											<td th:text="${typetest.time_typetest}"></td>
 											<td th:text="${typetest.quantityQuestion}"></td>
 											<td th:text="${typetest.scoreFactor}"></td>
 											<td th:text="${typetest.enumList.name}"></td>
-											<td>Edit | Delete</td>
+											<td>
+											<a th:href="@{'/admin/editTypetest/'+${typetest.id_typetest}}">
+											Edit
+											<a>
+											 | 
+											<a th:href="@{'/admin/deleteTypetest/'+${typetest.id_typetest}}">
+											 Delete
+											</a>
+											</td>
 										</tr>
 										
 									</tbody>

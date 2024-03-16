@@ -41,8 +41,11 @@
 						<h5 class="card-header">CodeTest Table</h5>
 						<br>
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-							<input class="btn btn-primary" type="submit" value=" Add New "></input>
-
+						
+							<a th:href="@{/admin/addCodeTest}">
+							<input class="btn btn-primary" type="submit" value=" Add CodeTest "></input>
+							</a>
+							
 							<input class="btn btn-primary" type="submit" value=" Filter "
 								style="margin-left: 20px;float:right"></input>
 
@@ -70,17 +73,25 @@
 										<tr>
 											<th>Id</th>
 											<th>Name</th>
-											<th>Phone</th>
 											<th>Status</th>
 											<th>Action</th>
 										</tr>
 									</thead>
+									
 									<tbody>
 										<tr th:each="codetest: ${codetests}">
 											<td th:text="${codetest.id_codetest}"></td>
 											<td th:text="${codetest.name_codetest}"></td>
 											<td th:text="${codetest.enumList.name}"></td>
-											<td>Edit | Delete</td>
+											<td>
+											<a th:href="@{'/admin/editCodeTest/'+${codetest.id_codetest}}">
+											Edit
+											<a>
+											 | 
+											<a th:href="@{'/admin/deleteCodeTest/'+${codetest.id_codetest}}">
+											 Delete
+											</a>
+											</td>
 										</tr>
 
 									</tbody>
@@ -88,7 +99,6 @@
 										<tr>
 											<th>Id</th>
 											<th>Name</th>
-											<th>Phone</th>
 											<th>Status</th>
 											<th>Action</th>
 										</tr>
