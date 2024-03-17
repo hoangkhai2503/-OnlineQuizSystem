@@ -38,7 +38,7 @@ public class Student implements java.io.Serializable{
 	    
 	    @ManyToOne
 	    @JoinColumn(name = "class_id_student")
-	    private Class gbclass;
+	    private _Class gbclass;
 	    
 	    @ManyToOne
 	    @JoinColumn(name = "role_id_student")
@@ -54,9 +54,25 @@ public class Student implements java.io.Serializable{
 
 		public Student(Integer id_student, String fullname_student, String email_student, String password_student,
 				String address_student, String phone_student, Date created_student, Date modified_student,
-				Class gbclass, Role role, EnumList enumlist) {
+				_Class gbclass, Role role, EnumList enumlist) {
 			super();
 			this.id_student = id_student;
+			this.fullname_student = fullname_student;
+			this.email_student = email_student;
+			this.password_student = password_student;
+			this.address_student = address_student;
+			this.phone_student = phone_student;
+			this.created_student = created_student;
+			this.modified_student = modified_student;
+			this.gbclass = gbclass;
+			this.role = role;
+			this.enumlist = enumlist;
+		}
+		
+		public Student(String fullname_student, String email_student, String password_student,
+				String address_student, String phone_student, Date created_student, Date modified_student,
+				_Class gbclass, Role role, EnumList enumlist) {
+			super();
 			this.fullname_student = fullname_student;
 			this.email_student = email_student;
 			this.password_student = password_student;
@@ -135,11 +151,11 @@ public class Student implements java.io.Serializable{
 			this.modified_student = modified_student;
 		}
 
-		public Class getGbclass() {
+		public _Class getGbclass() {
 			return gbclass;
 		}
 
-		public void setGbclass(Class gbclass) {
+		public void setGbclass(_Class gbclass) {
 			this.gbclass = gbclass;
 		}
 

@@ -25,6 +25,10 @@ public class Term implements java.io.Serializable{
 	    private Date modified_term;
 
 	    @ManyToOne
+	    @JoinColumn(name = "schoolyear_id_term")
+	    private SchoolYear schoolYear;
+	    
+	    @ManyToOne
 	    @JoinColumn(name = "status_id_term")
 	    private EnumList enumlist;
 	    
@@ -32,12 +36,13 @@ public class Term implements java.io.Serializable{
 			super();
 		}
 
-		public Term(Integer id_term, String name_term, Date created_term, Date modified_term, EnumList enumlist) {
+		public Term(Integer id_term, String name_term, Date created_term, Date modified_term, SchoolYear schoolYear, EnumList enumlist) {
 			super();
 			this.id_term = id_term;
 			this.name_term = name_term;
 			this.created_term = created_term;
 			this.modified_term = modified_term;
+			this.schoolYear = schoolYear;
 			this.enumlist = enumlist;
 		}
 
@@ -71,6 +76,14 @@ public class Term implements java.io.Serializable{
 
 		public void setModified_term(Date modified_term) {
 			this.modified_term = modified_term;
+		}
+		
+		public SchoolYear getSchoolYear() {
+			return schoolYear;
+		}
+
+		public void setSchoolYear(SchoolYear schoolYear) {
+			this.schoolYear = schoolYear;
 		}
 
 		public EnumList getEnumlist() {

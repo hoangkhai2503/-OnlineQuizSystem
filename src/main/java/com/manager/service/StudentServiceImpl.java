@@ -14,5 +14,20 @@ public class StudentServiceImpl implements StudentService{
 		// TODO Auto-generated method stub
 		return studentRepository.findAll();
 	}
+	@Override
+	public Student findId(int id_student) {
+		// TODO Auto-generated method stub
+		return studentRepository.findById(id_student).get();
+	}
+	@Override
+	public boolean save(Student student) {
+		try {
+			studentRepository.save(student);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 }

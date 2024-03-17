@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class UserVariableController {
 	@RequestMapping(value = { "variable" }, method = RequestMethod.GET)
 	public String TableVariable(ModelMap modelMap) {
-		
 		return "admin/table/variable";
 	}
 

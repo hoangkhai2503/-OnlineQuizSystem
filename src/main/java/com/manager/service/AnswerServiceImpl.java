@@ -30,4 +30,9 @@ public class AnswerServiceImpl implements AnswerService{
 		// TODO Auto-generated method stub
 		return answerRepository.findByIdQuestion(id_question);
 	}
+	@Override
+	public Answer findId(int id_answer) {
+		// TODO Auto-generated method stub
+		return answerRepository.findById(id_answer).get();
+	}
 }

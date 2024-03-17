@@ -41,7 +41,7 @@
 						<h5 class="card-header">Test Table</h5>
 						<br>
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-							<input class="btn btn-primary" type="submit" value=" Add New "></input>
+							<a class="btn btn-primary" th:href="@{'/admin/addTest'}">Add New</a>
 
 							<input class="btn btn-primary" type="submit" value=" Filter "
 								style="margin-left: 20px;float:right"></input>
@@ -91,30 +91,13 @@
 											<td th:text="${test.term.name_term}"></td>
 											<td th:text="${test.typetest.name_typetest}"></td>
 											<td th:text="${test.codetest.name_codetest}"></td>
-										    <td th:text="${#dates.format(test.starttime_test, 'dd-MM-yyyy | HH:mm:ss')}"></td>
-										    <td th:text="${#dates.format(test.ongoing_test, 'dd-MM-yyyy | HH:mm:ss')}"></td>
-										    <td th:text="${#dates.format(test.endtime_test, 'dd-MM-yyyy | HH:mm:ss')}"></td>
+										    <td th:text="${test.starttime_test}"></td>
+										    <td th:text="${test.ongoing_test}"></td>
+										    <td th:text="${test.endtime_test}"></td>
 											<td th:text="${test.enumlist.name}"></td>
-											<td>Edit | Delete</td>
+											<td><a th:href="@{'/admin/editTest/'+ ${test.id_test}}">Edit</a> | Delete</td>
 										</tr>
-										
 									</tbody>
-									<tfoot>
-										<tr>
-											<th>Id</th>
-											<th>Name</th>
-											<th>Class</th>
-											<th>Subject</th>
-											<th>Term</th>
-											<th>TypeTest</th>
-											<th>CodeTest</th>
-											<th>StartTime</th>
-											<th>Ongoing</th>
-											<th>endTime</th>
-											<th>Status</th>
-											<th>Action</th>
-										</tr>
-									</tfoot>
 								</table>
 							</div>
 						</div>

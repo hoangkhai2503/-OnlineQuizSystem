@@ -21,7 +21,7 @@ public class Test implements java.io.Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "class_id_test")
-	private Class gbclass;
+	private _Class gbclass;
 
 	@ManyToOne
 	@JoinColumn(name = "subject_id_test")
@@ -41,13 +41,13 @@ public class Test implements java.io.Serializable {
 	
 	@Column(name = "starttime_test")
 	// @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
-	private Date starttime_test;
+	private String starttime_test;
 
 	@Column(name = "ongoing_test")
-	private Date ongoing_test;
+	private String ongoing_test;
 
 	@Column(name = "endtime_test")
-	private Date endtime_test;
+	private String endtime_test;
 
 	@Column(name = "created_test")
 	private Date created_test;
@@ -63,8 +63,8 @@ public class Test implements java.io.Serializable {
 		super();
 	}
 
-	public Test(Integer id_test, String name_test, Class gbclass, Subject subject, Term term, Typetest typetest,
-			Codetest codetest, Date starttime_test, Date ongoing_test, Date endtime_test, Date created_test,
+	public Test(Integer id_test, String name_test, _Class gbclass, Subject subject, Term term, Typetest typetest,
+			Codetest codetest, String starttime_test, String ongoing_test, String endtime_test, Date created_test,
 			Date modified_test, EnumList enumlist) {
 		super();
 		this.id_test = id_test;
@@ -98,11 +98,11 @@ public class Test implements java.io.Serializable {
 		this.name_test = name_test;
 	}
 
-	public Class getGbclass() {
+	public _Class getGbclass() {
 		return gbclass;
 	}
 
-	public void setGbclass(Class gbclass) {
+	public void setGbclass(_Class gbclass) {
 		this.gbclass = gbclass;
 	}
 
@@ -138,27 +138,27 @@ public class Test implements java.io.Serializable {
 		this.codetest = codetest;
 	}
 
-	public Date getStarttime_test() {
+	public String getStarttime_test() {
 		return starttime_test;
 	}
 
-	public void setStarttime_test(Date starttime_test) {
+	public void setStarttime_test(String starttime_test) {
 		this.starttime_test = starttime_test;
 	}
 
-	public Date getOngoing_test() {
+	public String getOngoing_test() {
 		return ongoing_test;
 	}
 
-	public void setOngoing_test(Date ongoing_test) {
+	public void setOngoing_test(String ongoing_test) {
 		this.ongoing_test = ongoing_test;
 	}
 
-	public Date getEndtime_test() {
+	public String getEndtime_test() {
 		return endtime_test;
 	}
 
-	public void setEndtime_test(Date endtime_test) {
+	public void setEndtime_test(String endtime_test) {
 		this.endtime_test = endtime_test;
 	}
 

@@ -41,7 +41,7 @@
 						<h5 class="card-header">Class Table</h5>
 						<br>
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-							<input class="btn btn-primary" type="submit" value=" Add New "></input>
+							<a class="btn btn-primary" th:href="@{'/admin/addClass'}">Add New</a>
 
 							<input class="btn btn-primary" type="submit" value=" Filter "
 								style="margin-left: 20px;float:right"></input>
@@ -86,20 +86,10 @@
 												th:text="${#dates.format(gbclass.modified_class, 'dd-MM-yyyy')}">
 											</td>
 
-											<td>Edit | Delete</td>
+											<td><a th:href="@{'/admin/editClass/'+ ${gbclass.id_class}}">Edit</a> | Delete</td>
 										</tr>
 
 									</tbody>
-									<tfoot>
-										<tr>
-											<th>Id</th>
-											<th>ClassName</th>
-											<th>Status</th>
-											<th>Teacher</th>
-											<th>Created</th>
-											<th>Action</th>
-										</tr>
-									</tfoot>
 								</table>
 							</div>
 						</div>
