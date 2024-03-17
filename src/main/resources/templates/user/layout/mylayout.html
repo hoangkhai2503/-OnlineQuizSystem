@@ -99,10 +99,7 @@
 						<span class="icon-lock"></span>
 						Log In
 					</a>
-					<a th:href="@{/user/register}" class="small mr-3">
-						<span class="icon-person"></span>
-						Register
-					</a>
+					
 					<a th:href="@{/user/profile}" class="small">
 						<span class="icon-user"></span>
 						Profile
@@ -140,10 +137,10 @@
 					<li><a th:href="@{/user/gallery}">Gallery</a></li>
 					<li><a th:href="@{/user/about}">About</a></li>
 					<li><a th:href="@{/user/contact}">Contact</a></li>
-					<li><a th:href="@{/user/exam}">Exam</a></li>
+					
 				</ul>
 
-				<a href="#" class="btn-book btn btn-secondary btn-sm menu-absolute">Enroll Now</a>
+				<a th:href="@{/user/exam}" class="btn-book btn btn-secondary btn-sm menu-absolute">My Exam</a>
 
 				<a href="#"
 					class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light"

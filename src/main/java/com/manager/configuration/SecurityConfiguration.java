@@ -19,6 +19,8 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.manager.service.CompositeUserDetailsService;
+import com.manager.service.StudentService;
 import com.manager.service.SuperAdminService;
 
 import jakarta.servlet.ServletException;
@@ -30,6 +32,25 @@ import jakarta.servlet.http.HttpServletResponse;
 public class SecurityConfiguration {
 	@Autowired
 	private SuperAdminService superAdminService;
+//	@Autowired
+//	private final StudentService studentService;
+//	@Autowired
+//    private final SuperAdminService superAdminService;
+//
+//    public SecurityConfiguration(StudentService studentService, SuperAdminService superAdminService) {
+//        this.studentService = studentService;
+//        this.superAdminService = superAdminService;
+//    }
+//
+//    @Bean
+//    public CompositeUserDetailsService compositeUserDetailsService() {
+//        return new CompositeUserDetailsService(studentService, superAdminService);
+//    }
+//    @Autowired
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(compositeUserDetailsService()).passwordEncoder(encoder());
+//    }
+//
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
@@ -38,7 +59,7 @@ public class SecurityConfiguration {
 				.csrf(csf -> csf.disable())
 				.authorizeHttpRequests(auth -> {
 					auth
-					.requestMatchers("/user/**","/admin/assets/**","/admin/login").permitAll() 
+					.requestMatchers("/user/**","/admin/assets/**","/admin/login","/user/login/**").permitAll() 
 					.requestMatchers("/admin/role","/admin/superadmin","/admin/createdAdmin").hasRole("SUPERADMIN")
 		             .requestMatchers("/admin/**").hasAnyRole("SUPERADMIN", "ADMIN", "TEACHER");
 					// cấu hình đường link dẫn đến css và js
