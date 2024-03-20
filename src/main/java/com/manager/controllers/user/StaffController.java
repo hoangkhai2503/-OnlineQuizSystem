@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.manager.service.VariableService;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping({"user"})
 public class StaffController {
@@ -18,8 +20,9 @@ public class StaffController {
 	@Autowired
 	private VariableService variableService;
 	@RequestMapping(value = { "staff", "" }, method = RequestMethod.GET)
-	public String staff(ModelMap modelMap) {
-		
+	public String staff(ModelMap modelMap,HttpServletRequest request) {
+		String value = (String) request.getSession().getAttribute("studentName");
+		modelMap.put("studentName", value);
 		return "user/home/staff";
 	}
 }

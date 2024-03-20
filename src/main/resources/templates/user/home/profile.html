@@ -52,27 +52,25 @@
             <div class="user mt-4">
               <i class="icon-user"></i>
               <h4 class="mb-2">FullName:</h4>
-              <p>Phan ha Trung Tin</p>
+              <p th:text="${studentName}"></p>
             </div>
 
             <div class="address mt-4">
               <i class="icon-room"></i>
               <h4 class="mb-2">Address:</h4>
-              <p>
-               43 Raymouth Rd. Baltemoer, London 3910
-              </p>
+              <p th:text="${studentAddress}"></p>
             </div>
 
             <div class="email mt-4">
               <i class="icon-envelope"></i>
               <h4 class="mb-2">Email:</h4>
-              <p>info@Untree.co</p>
+              <p th:text="${studentEmail}"></p>
             </div>
 
             <div class="phone mt-4">
               <i class="icon-phone"></i>
               <h4 class="mb-2">Call:</h4>
-              <p>+1 1234 55488 55</p>
+              <p th:text="${studentPhone}"></p>
             </div>
 
           </div>
@@ -84,11 +82,11 @@
                   <div class="d-flex flex-column align-items-center text-center">
                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
-                      <h4>John Doe</h4>
-                      <p class="text-secondary mb-1">Full Stack Developer</p>
-                      <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                      <button class="btn btn-primary">Follow</button>
-                      <button class="btn btn-outline-primary">Message</button>
+                      <h4 th:text="${studentName}"></h4>
+                      <p class="text-secondary mb-1" th:text="${'Class: ' + class}"></p>
+                      <p class="text-muted font-size-sm" th:text="${'Homeroom Teacher: ' + teacher}">Bay Area, San Francisco, CA</p>
+                      <a class="btn btn-primary" th:href="@{/user/logout}">Sign Out</a>
+                      <a class="btn btn-outline-primary" th:href="@{/user/register}">&nbsp;&nbsp;Edit &nbsp;&nbsp;</a>
                     </div>
                   </div>
                 </div>

@@ -7,7 +7,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -33,8 +32,6 @@ import com.manager.service.AnswerService;
 import com.manager.service.EnumListService;
 import com.manager.service.QuestionService;
 import com.manager.service.TestService;
-
-import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping({ "admin" })
@@ -180,7 +177,7 @@ public class AdQuestionController {
 			redirectAttributes.addFlashAttribute("msg", "Failed");
 		}
 		
-		return "redirect:/admin/question";
+		return "redirect:/admin/test";
 	}
 	
 	//ADD BY EXCEL FILE
@@ -217,7 +214,7 @@ public class AdQuestionController {
 	    		}
 	    	}
 	    }
-		return "redirect:/admin/question";
+	    return "redirect:/admin/test";
 	}	
 	//SET QUESTION TO TEST
 	@RequestMapping(value = { "setQuestion" }, method = RequestMethod.GET)
@@ -269,7 +266,7 @@ public class AdQuestionController {
 			}
 		}
 		
-		return "redirect:/admin/question";
+		return "redirect:/admin/test";
 	}
 	
 	//EDIT

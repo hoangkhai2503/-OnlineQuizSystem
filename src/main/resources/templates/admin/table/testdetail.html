@@ -41,27 +41,14 @@
 						<h5 class="card-header">Variable Table</h5>
 						<br>
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-							<input class="btn btn-primary" type="submit" value=" Add New "></input>
-
-							<input class="btn btn-primary" type="submit" value=" Filter "
-								style="margin-left: 20px;float:right"></input>
-
-							<select style="margin-left: 20px;padding:
-								 12px; border-color: gainsboro;border-radius: 5px;float:right;width: 200px;">
-								<option>Volvo</option>
-								<option>Saab</option>
-								<option>Mercedes</option>
-								<option>Audi</option>
-							</select>
-							<input type="text" placeholder="Seach..." style="margin-left: 20px;padding:
-								 8px; border-color: gainsboro;border-radius: 5px;float:right">
-
-							<input type="text" placeholder="Seach..." style="margin-left: 20px;padding:
-								 8px; border-color: gainsboro;border-radius: 5px;float:right">
-
-							<input type="text" placeholder="Seach..." style="margin-left: 20px;padding:
-								 8px; border-color: gainsboro;border-radius: 5px;float:right">
-
+							<form method="get" th:action="@{/admin/selectClassTestDetail}">
+	    						<input type="hidden" name="id_test" th:value="${id_test}" />
+	    						<input class="btn btn-primary" type="submit" value="Filter" style="margin-left: 20px;float:right" />
+	   							<select style="margin-left: 20px;padding: 12px; border-color: gainsboro;border-radius: 5px;float:right;width: 200px;" name="selectClass">
+		        					<option value="-1">All</option>
+		        					<option th:each="class : ${classs}" th:value="${class.id_class}" th:text="${class.name_class}"></option>
+	    						</select>
+							</form>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
@@ -72,34 +59,24 @@
 											<th>Test Name</th>
 											<th>Student Name</th>
 											<th>Score</th>
-											<th>Last Modified</th>
-											<th>Status</th>
-											<th>Action</th>
+											<th>Class</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="testdetail: ${testdetails}">
+										<th:block th:each="testdetail: ${testdetails}">
+										<th:block th:if="${testdetail.test.id_test == id_test}">
+										<th:block th:if="${testdetail.student.gbclass.id_class == selectClass || selectClass == -1}">
+										<tr>
 											<td th:text="${testdetail.id_testdetail}"></td>
 											<td th:text="${testdetail.test.name_test}"></td>
 											<td th:text="${testdetail.student.fullname_student}"></td>
 											<td th:text="${testdetail.score_testdetail}"></td>
-											<td th:text="${#dates.format(testdetail.modified_testdetail, 'dd-MM-yyyy')}"></td>
-											<td th:text="${testdetail.enumList.name}"></td>
-											<td>Edit | Delete</td>
+											<td th:text="${testdetail.student.gbclass.name_class}"></td>
 										</tr>
-
+										</th:block>
+										</th:block>
+										</th:block>										
 									</tbody>
-									<tfoot>
-										<tr>
-										<th>Id</th>
-											<th>Test Name</th>
-											<th>Student Name</th>
-											<th>Score</th>
-											<th>Last Modified</th>
-											<th>Status</th>
-											<th>Action</th>
-										</tr>
-									</tfoot>
 								</table>
 							</div>
 						</div>

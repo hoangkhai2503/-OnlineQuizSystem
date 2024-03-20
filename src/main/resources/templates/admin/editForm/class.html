@@ -14,7 +14,7 @@
 			<div class="row">
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="page-header">
-						<h2 class="pageheader-title">Form Edit Class </h2>
+						<h2 class="pageheader-title">Detail Class</h2>
 						<p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit
 							amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
 						<div class="page-breadcrumb">
@@ -36,6 +36,7 @@
 				<!-- ============================================================== -->
 				<!-- valifation types -->
 				<!-- ============================================================== -->
+				<th:block th:if="${role != 'teacher'}">
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="card">
 						<h5 class="card-header">Edit Class</h5>
@@ -81,6 +82,7 @@
 						</div>
 					</div>
 				</div>
+				</th:block>
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="card">
 						<h5 class="card-header">Student Table</h5>
@@ -88,24 +90,18 @@
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
 							
 
-							<input class="btn btn-primary" type="submit" value=" Filter "
+							<form method="get" th:action="@{/admin/selectStudent}">
+								<input class="btn btn-primary" type="submit" value=" Filter "
 								style="margin-left: 20px;float:right"></input>
-
 							<select style="margin-left: 20px;padding:
-								 12px; border-color: gainsboro;border-radius: 5px;float:right;width: 200px;">
-								<option>Volvo</option>
-								<option>Saab</option>
-								<option>Mercedes</option>
-								<option>Audi</option>
+								 12px; border-color: gainsboro;border-radius: 5px;float:right;width: 200px;" name="status">
+								<option value="-1">All</option>
+								<option value="4">Active</option>
+								<option value="5">Inactive</option>
 							</select>
 							<input type="text" placeholder="Seach..." style="margin-left: 20px;padding:
-								 8px; border-color: gainsboro;border-radius: 5px;float:right">
-
-							<input type="text" placeholder="Seach..." style="margin-left: 20px;padding:
-								 8px; border-color: gainsboro;border-radius: 5px;float:right">
-
-							<input type="text" placeholder="Seach..." style="margin-left: 20px;padding:
-								 8px; border-color: gainsboro;border-radius: 5px;float:right">
+								 8px; border-color: gainsboro;border-radius: 5px;float:right" name="keyword">
+							</form>	
 
 						</div>
 						<div class="card-body">
@@ -132,7 +128,7 @@
 											<td th:text="${student.phone_student}"></td>
 											<td th:text="${student.gbclass.name_class}"></td>
 											<td th:text="${student.enumlist.name}"></td>
-											<td>Edit | Delete</td>
+											<td><a th:href="@{'/admin/testStudent/'+ ${student.id_student}}">Detail</a></td>
 										</tr>
 										</th:block>
 										</th:block>
@@ -140,6 +136,7 @@
 								</table>
 							</div>
 						</div>
+						<th:block th:if="${role != 'teacher'}">
 						<form method="post" th:action="@{/admin/addStudentByExcel}" enctype="multipart/form-data">														
 								<div class="form-group row">
 									<label class="col-12 col-sm-3 col-form-label text-sm-right">New Student</label>
@@ -157,6 +154,7 @@
 									</div>
 								</div>
 							</form>
+						</th:block>
 					</div>
 				</div>
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -166,24 +164,18 @@
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
 							
 
-							<input class="btn btn-primary" type="submit" value=" Filter "
+							<form method="get" th:action="@{/admin/selectClassTeacher}">
+								<input class="btn btn-primary" type="submit" value=" Filter "
 								style="margin-left: 20px;float:right"></input>
-
 							<select style="margin-left: 20px;padding:
-								 12px; border-color: gainsboro;border-radius: 5px;float:right;width: 200px;">
-								<option>Volvo</option>
-								<option>Saab</option>
-								<option>Mercedes</option>
-								<option>Audi</option>
+								 12px; border-color: gainsboro;border-radius: 5px;float:right;width: 200px;" name="status">
+								<option value="-1">All</option>
+								<option value="4">Active</option>
+								<option value="5">Inactive</option>
 							</select>
 							<input type="text" placeholder="Seach..." style="margin-left: 20px;padding:
-								 8px; border-color: gainsboro;border-radius: 5px;float:right">
-
-							<input type="text" placeholder="Seach..." style="margin-left: 20px;padding:
-								 8px; border-color: gainsboro;border-radius: 5px;float:right">
-
-							<input type="text" placeholder="Seach..." style="margin-left: 20px;padding:
-								 8px; border-color: gainsboro;border-radius: 5px;float:right">
+								 8px; border-color: gainsboro;border-radius: 5px;float:right" name="keyword">
+							</form>	
 
 						</div>
 						<div class="card-body">
@@ -213,6 +205,7 @@
 									</tbody>
 								</table>
 							</div>
+							<th:block th:if="${role != 'teacher'}">
 								<form method="post" th:action="@{/admin/addClassDetail}">
 								<div class="form-group row">
 									<label class="col-12 col-sm-3 col-form-label text-sm-right">Add Teacher</label>
@@ -233,6 +226,7 @@
 									</div>
 								</div>
 							</form>
+							</th:block>
 						</div>
 					</div>
 				</div>

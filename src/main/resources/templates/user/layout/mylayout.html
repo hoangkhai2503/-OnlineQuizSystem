@@ -95,18 +95,18 @@
 				</div>
 
 				<div class="col-6 col-lg-3 text-right">
-					<a th:href="@{/user/login}" class="small mr-3">
-						<span class="icon-lock"></span>
-						Log In
-					</a>
-					<a th:href="@{/user/register}" class="small mr-3">
-						<span class="icon-person"></span>
-						Register
-					</a>
-					<a th:href="@{/user/profile}" class="small">
+					<th:block th:if="${studentName}">
+						<a th:href="@{/user/profile}" class="small">
 						<span class="icon-user"></span>
-						Profile
+						<span  th:text="${studentName}"></span>
 					</a>
+					</th:block>	
+					<th:block th:unless="${studentName}">
+							<a th:href="@{/user/login}" class="small">
+						<span class="icon-user"></span>
+						<span> Login</span>
+					</a>
+					</th:block>
 				</div>
 
 			</div>

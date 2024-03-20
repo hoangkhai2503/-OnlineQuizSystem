@@ -41,26 +41,19 @@
 						<h5 class="card-header">Admin Table</h5>
 						<br>
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-							<input class="btn btn-primary" type="submit" value=" Add New "></input>
-
+							
+							<a class="btn btn-primary" th:href="@{'/admin/createdAdmin'}">Add New</a>
 							<input class="btn btn-primary" type="submit" value=" Filter "
 								style="margin-left: 20px;float:right"></input>
 
 							<select style="margin-left: 20px;padding:
 								 12px; border-color: gainsboro;border-radius: 5px;float:right;width: 200px;">
-								<option>Volvo</option>
-								<option>Saab</option>
-								<option>Mercedes</option>
-								<option>Audi</option>
+								<option>All</option>
+							
 							</select>
 							<input type="text" placeholder="Seach..." style="margin-left: 20px;padding:
 								 8px; border-color: gainsboro;border-radius: 5px;float:right">
 
-							<input type="text" placeholder="Seach..." style="margin-left: 20px;padding:
-								 8px; border-color: gainsboro;border-radius: 5px;float:right">
-
-							<input type="text" placeholder="Seach..." style="margin-left: 20px;padding:
-								 8px; border-color: gainsboro;border-radius: 5px;float:right">
 
 						</div>
 						<div class="card-body">
@@ -85,15 +78,7 @@
 										</tr>
 										
 									</tbody>
-									<tfoot>
-										<tr>
-											<th>Id</th>
-											<th>Username</th>
-											<th>Status</th>
-											<th>Role</th>
-											<th>Action</th>
-										</tr>
-									</tfoot>
+								
 								</table>
 							</div>
 						</div>

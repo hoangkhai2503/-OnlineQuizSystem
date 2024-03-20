@@ -54,13 +54,13 @@
 									<div class="form-group" style="padding-left: 10px;">
 										<th:block th:each="answer : ${answers}">
 										<th:block th:if="${answer.question.id_question == question.id_question}">
-										<label class="control control--checkbox">
+										<label class="control control--checkbox" >
 											<span class="caption"><div th:text="${answer.name_answer}" style="color:black"></div></span>
 											<input type="radio" th:name="${question.id_question}" th:value="${answer.id_answer}" style="border-radius: 50%; border: 2px solid blue;">
-											<div class="control__indicator"></div>
+											<div class="control__indicator" style="border-radius: 50%;"></div>
 										</label>
 										</th:block>
-										</th:block>
+										</th:block>	
 									</div>
 							</div>
 							</th:block>

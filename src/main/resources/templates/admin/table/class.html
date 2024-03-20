@@ -41,27 +41,25 @@
 						<h5 class="card-header">Class Table</h5>
 						<br>
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-							<a class="btn btn-primary" th:href="@{'/admin/addClass'}">Add New</a>
-
-							<input class="btn btn-primary" type="submit" value=" Filter "
+							
+							<th:block th:if="${role == 'superAdmin' or role == 'admin'}">
+								<a class="btn btn-primary" th:href="@{'/admin/addClass'}">Add New</a>
+							</th:block>
+							
+							
+							
+							<form method="get" th:action="@{/admin/selectClass}">
+								<input class="btn btn-primary" type="submit" value=" Filter "
 								style="margin-left: 20px;float:right"></input>
-
 							<select style="margin-left: 20px;padding:
-								 12px; border-color: gainsboro;border-radius: 5px;float:right;width: 200px;">
-								<option>Volvo</option>
-								<option>Saab</option>
-								<option>Mercedes</option>
-								<option>Audi</option>
+								 12px; border-color: gainsboro;border-radius: 5px;float:right;width: 200px;" name="status">
+								<option value="-1">All</option>
+								<option value="4">Active</option>
+								<option value="5">Inactive</option>
 							</select>
 							<input type="text" placeholder="Seach..." style="margin-left: 20px;padding:
-								 8px; border-color: gainsboro;border-radius: 5px;float:right">
-
-							<input type="text" placeholder="Seach..." style="margin-left: 20px;padding:
-								 8px; border-color: gainsboro;border-radius: 5px;float:right">
-
-							<input type="text" placeholder="Seach..." style="margin-left: 20px;padding:
-								 8px; border-color: gainsboro;border-radius: 5px;float:right">
-
+								 8px; border-color: gainsboro;border-radius: 5px;float:right" name="keyword">
+							</form>	
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
@@ -77,7 +75,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="gbclass: ${gbclass}">
+										<tr th:each="gbclass: ${gbclass}" th:if="${(gbclass.name_class.contains(keyword) or keyword == '') && (gbclass.enumList.id == status or status == -1)}">
 											<td th:text="${gbclass.id_class}"></td>
 											<td th:text="${gbclass.name_class}"></td>
 											<td th:text="${gbclass.enumList.name}"></td>
@@ -85,10 +83,8 @@
 											<td
 												th:text="${#dates.format(gbclass.modified_class, 'dd-MM-yyyy')}">
 											</td>
-
 											<td><a th:href="@{'/admin/editClass/'+ ${gbclass.id_class}}">Edit</a> | Delete</td>
 										</tr>
-
 									</tbody>
 								</table>
 							</div>

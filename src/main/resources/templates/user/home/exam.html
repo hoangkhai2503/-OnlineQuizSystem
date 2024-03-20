@@ -24,8 +24,8 @@
 										mountains, far from the countries Vokalia and Consonantia, there live.</p>
 								</div>
 
-								<p class="mb-0" data-aos="fade-up" data-aos-delay="300"><a href="#"
-										class="btn btn-secondary">Explore courses</a></p>
+								<p class="mb-0" data-aos="fade-up" data-aos-delay="300"><a
+										class="btn btn-secondary" th:href="@{'/user/historyExam'}">History Exam</a></p>
 
 							</div>
 
@@ -59,6 +59,7 @@
 										<th:block th:each="test: ${tests}">
 											<th:block th:if="${test.enumlist.id != 13}">
 												<th:block th:if="${test.enumlist.id != 1}">
+												<th:block th:if="${test.gbclass.id_class == class}">
 												<th:block th:if="${test.subject.id_subject == subject.id_subject}">
 													<div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
 														data-parent="#accordion_1">
@@ -66,6 +67,7 @@
 															<a th:href="@{'/user/detailExam/'+ ${test.id_test}}"><div th:text="${test.name_test}"></div></a>
 														</div>
 													</div>
+												</th:block>
 												</th:block>
 												</th:block>
 											</th:block>
@@ -85,6 +87,7 @@
 										<th:block th:each="test: ${tests}">
 											<th:block th:if="${test.enumlist.id != 13}">
 												<th:block th:if="${test.enumlist.id == 1}">
+												<th:block th:if="${test.gbclass.id_class == class}">
 												<th:block th:if="${test.subject.id_subject == subject.id_subject}">
 													<div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
 														data-parent="#accordion_1">
@@ -93,6 +96,7 @@
 														</div>
 													</div>
 												</th:block>
+											</th:block>
 											</th:block>
 											</th:block>
 										</th:block>

@@ -29,5 +29,10 @@ public class StudentServiceImpl implements StudentService{
 			return false;
 		}
 	}
+	@Override
+	public Student login(String email_student) {
+		// TODO Auto-generated method stub
+		return studentRepository.findByEmailStudent(email_student);
+	}
 
 }

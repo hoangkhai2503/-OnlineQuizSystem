@@ -35,6 +35,7 @@ import com.manager.entities.TestDetail;
 import com.manager.entities._Class;
 import com.manager.service.AnswerService;
 import com.manager.service.ClassService;
+import com.manager.service.EmailService;
 import com.manager.service.EnumListService;
 import com.manager.service.QuestionService;
 import com.manager.service.StudentService;
@@ -73,23 +74,40 @@ public class ExamController {
 	private StudentService studentService;
 	
 	@Autowired
+    private EmailService emailService;
+	
+	@Autowired
     private RequestMappingHandlerMapping requestMappingHandlerMapping;
 	
 	@RequestMapping(value = { "exam", "" }, method = RequestMethod.GET)
 	
-	public String exam(ModelMap modelMap) {
+	public String exam(ModelMap modelMap,HttpServletRequest request) {
+		
+		String value = (String) request.getSession().getAttribute("studentName");
+		if(value != null) {
+			
+		
+		int idStudent = (int) request.getSession().getAttribute("studentId");
 		modelMap.put("tests", testService.findAll());
 		modelMap.put("classs", classService.findAll());
 		modelMap.put("subjects", subjectService.findAll());
 		
+		modelMap.put("studentName", value);
+		modelMap.put("class", studentService.findId(idStudent).getGbclass().getId_class());
 		return "user/home/exam";
+		}
+		
+		else {
+			return "redirect:/user/login";
+		}
 	}
 	
 	//EDIT
 	@RequestMapping(value = "detailExam/{id_test}", method = RequestMethod.GET)
-	public String detailExam(@PathVariable("id_test") int id_test, ModelMap modelMap,RedirectAttributes redirectAttributes) {
+	public String detailExam(@PathVariable("id_test") int id_test, ModelMap modelMap,RedirectAttributes redirectAttributes,HttpServletRequest request) {
 		
 		Test test =  testService.findId(id_test);
+		int idStudent = (int) request.getSession().getAttribute("studentId");
 		modelMap.put("test", test);
 		
 		//Create TestDetail
@@ -105,7 +123,7 @@ public class ExamController {
 			if(testDetailItem.getTest().getId_test() == id_test) {
 				exist1++;
 				testDetailIdTest = testDetailItem.getTest().getId_test();
-				if(testDetailItem.getStudent().getId_student() == 1) {
+				if(testDetailItem.getStudent().getId_student() == idStudent) {
 					testDetailIdStudent = testDetailItem.getStudent().getId_student();
 					exist2++;
 				}
@@ -115,7 +133,7 @@ public class ExamController {
 			testDetail.setCreated_testdetail(new Date());
 			testDetail.setModified_testdetail(new Date());
 			testDetail.setEnumList(enumListService.find(12));
-			testDetail.setStudent(studentService.findId(1));
+			testDetail.setStudent(studentService.findId(idStudent));
 			testDetail.setTest(testService.findId(id_test));
 			testDetailService.save(testDetail);
 			testDetail = testDetailService.findId(testDetailService.findIdLatest());
@@ -156,15 +174,20 @@ public class ExamController {
 		    }
 		}
 		modelMap.put("testDetail", testDetail);
+		String value = (String) request.getSession().getAttribute("studentName");
+		modelMap.put("studentName", value);
+		
+		
         return "user/home/detailExam";
 	}
 	
 	
 	//EDIT
 	@RequestMapping(value = "doExam/{id_test}/{id_testdetail}", method = RequestMethod.GET)
-	public String doExam(@PathVariable("id_test") int id_test,@PathVariable("id_testdetail") int id_testdetail, ModelMap modelMap,RedirectAttributes redirectAttributes) {
+	public String doExam(@PathVariable("id_test") int id_test,@PathVariable("id_testdetail") int id_testdetail, ModelMap modelMap,RedirectAttributes redirectAttributes,HttpServletRequest request) {
 	
 		Test test = testService.findId(id_test);
+		
 		TestDetail testDetail = testDetailService.findId(id_testdetail);
 		if(!"Done".equals(testDetail.getEnumList().getName())) {
 			modelMap.put("test", test);
@@ -185,47 +208,99 @@ public class ExamController {
 		    modelMap.addAttribute("secondsRemaining", secondsDifference);
 			return "user/home/doExam";
 		}
+		String value = (String) request.getSession().getAttribute("studentName");
+		modelMap.put("studentName", value);
 		return "redirect:/user/detailExam/"+ test.getId_test();
 	}
 	
 	@RequestMapping(value = "submitExam", method = RequestMethod.POST)
-	public String submitExam(@RequestParam Map<String, String> formData,@ModelAttribute("test") Test test,@ModelAttribute("testDetail") TestDetail testDetail) {	
+	public String submitExam(@RequestParam Map<String, String> formData,@ModelAttribute("test") Test test,@ModelAttribute("testDetail") TestDetail testDetail,HttpServletRequest request,ModelMap modelMap) {	
 		
-		int totalQuestion = 0;
-		List<Question> questions = (List<Question>) questionService.findAll();
-		for (Question question : questions) {
-			if(question.getTest().getId_test() == test.getId_test()) {
-				totalQuestion++;
+		TestDetail oldTestDetail = testDetailService.findId(testDetail.getId_testdetail());
+		if(oldTestDetail.getEnumList().getId() !=1 ) {
+			int totalQuestion = 0;
+			List<Question> questions = (List<Question>) questionService.findAll();
+			for (Question question : questions) {
+				if(question.getTest().getId_test() == test.getId_test()) {
+					totalQuestion++;
+				}
+			}
+			int answerCorrect = 0;
+			int giamBuoc = 0;
+			Answer answer = new Answer();
+			
+	        for (Map.Entry<String, String> entry : formData.entrySet()) {
+	            String questionId = entry.getKey().replace("question_", "");
+	            String answerId = entry.getValue();
+//	            System.out.println("Question ID: " + questionId + ", Answer ID: " + answerId);
+	            if(giamBuoc !=0 ) {
+	            	answer = answerService.findId(Integer.parseInt(answerId));
+	                if(answer.getEnumlist().getName().equals("True")) {
+	                    	answerCorrect++;
+	                 }
+	            }
+	            giamBuoc++;	
+	        }   
+	        System.out.print("\nKet luan: "+ answerCorrect+ "/"+ totalQuestion+ "\n");
+	        double result = (double) answerCorrect / totalQuestion * 10;
+	        DecimalFormat df = new DecimalFormat("#.##");
+	        String formattedResult = df.format(result);
+	        formattedResult = formattedResult.replace(",", ".");
+	        double finalResult = Double.parseDouble(formattedResult);
+	        System.out.println("Result: " + finalResult);
+	        TestDetail _teTestDetail = testDetailService.findId(testDetail.getId_testdetail());
+	        _teTestDetail.setScore_testdetail(finalResult);
+	        _teTestDetail.setEnumList(enumListService.find(1));
+	        testDetailService.save(_teTestDetail);
+	        String value = (String) request.getSession().getAttribute("studentName");
+	        int studentId = (int) request.getSession().getAttribute("studentId");
+			modelMap.put("studentName", value);
+		}
+		
+		
+//		 String to = "rubican100@gmail.com";
+//	     String subject = "Test Email";
+//	     String text = "This is a test email sent from Spring Boot.";
+//	     emailService.sendSimpleMessage(to, subject, text);
+
+		String value = (String) request.getSession().getAttribute("studentName");
+        int studentId = (int) request.getSession().getAttribute("studentId");
+		modelMap.put("studentName", value);
+        return "redirect:/user/detailExam/"+ test.getId_test();
+	}
+	
+	@RequestMapping(value = { "historyExam", }, method = RequestMethod.GET)
+	
+	public String historyExam(ModelMap modelMap,HttpServletRequest request) {
+		
+		String value = (String) request.getSession().getAttribute("studentName");
+		int idStudent = (int) request.getSession().getAttribute("studentId");
+		
+		modelMap.put("testdetails", testDetailService.findAll());
+		modelMap.put("studentName", value);
+		modelMap.put("studentId", idStudent);
+		
+		List <TestDetail> testdetails =  (List<TestDetail>) testDetailService.findAll();
+		double total = 0.00;
+		int coefficient = 0;
+		for(TestDetail testdetail:  testdetails) {
+			if(testdetail.getStudent().getId_student() == idStudent) {
+				total = total + testdetail.getScore_testdetail()*testdetail.getTest().getTypetest().getScoreFactor();
+				coefficient = coefficient + testdetail.getTest().getTypetest().getScoreFactor();
 			}
 		}
-		int answerCorrect = 0;
-		int giamBuoc = 0;
-		Answer answer = new Answer();
+		if(coefficient != 0) {
+			DecimalFormat df = new DecimalFormat("#.##");
+			String formattedNumber = df.format(total/coefficient);
+			modelMap.put("mediumScore", formattedNumber);
+		}else {
+			modelMap.put("mediumScore", 0);
+		}
 		
-        for (Map.Entry<String, String> entry : formData.entrySet()) {
-            String questionId = entry.getKey().replace("question_", "");
-            String answerId = entry.getValue();
-//            System.out.println("Question ID: " + questionId + ", Answer ID: " + answerId);
-            if(giamBuoc !=0 ) {
-            	answer = answerService.findId(Integer.parseInt(answerId));
-                if(answer.getEnumlist().getName().equals("True")) {
-                    	answerCorrect++;
-                 }
-            }
-            giamBuoc++;	
-        }   
-        System.out.print("\nKet luan: "+ answerCorrect+ "/"+ totalQuestion+ "\n");
-        double result = (double) answerCorrect / totalQuestion * 10;
-        DecimalFormat df = new DecimalFormat("#.##");
-        String formattedResult = df.format(result);
-        formattedResult = formattedResult.replace(",", ".");
-        double finalResult = Double.parseDouble(formattedResult);
-        System.out.println("Result: " + finalResult);
-        TestDetail _teTestDetail = testDetailService.findId(testDetail.getId_testdetail());
-        _teTestDetail.setScore_testdetail(finalResult);
-        _teTestDetail.setEnumList(enumListService.find(1));
-        testDetailService.save(_teTestDetail);
-        return "redirect:/user/detailExam/"+ test.getId_test();
+		return "user/home/historyExam";
+		
+		
+		
 	}
 	
 

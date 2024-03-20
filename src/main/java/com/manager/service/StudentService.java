@@ -8,4 +8,7 @@ public interface StudentService {
 	public Student findId(int id_student);
 	
 	public boolean save(Student student);
+	
+	
+	public Student login(String email_student);
 }

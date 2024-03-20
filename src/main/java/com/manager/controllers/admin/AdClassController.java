@@ -8,6 +8,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,8 @@ import com.manager.entities.Answer;
 import com.manager.entities.ClassDetail;
 import com.manager.entities.Question;
 import com.manager.entities.SchoolYear;
+import com.manager.entities.Superadmin;
+import com.manager.entities.Teacher;
 import com.manager.entities._Class;
 import com.manager.helpers.FileHelper;
 import com.manager.service.ClassDetailService;
@@ -31,6 +34,7 @@ import com.manager.service.ClassService;
 import com.manager.service.EnumListService;
 import com.manager.service.SchoolYearService;
 import com.manager.service.StudentService;
+import com.manager.service.SuperAdminService;
 import com.manager.service.TeacherService;
 
 @Controller
@@ -54,12 +58,34 @@ public class AdClassController {
 	@Autowired
 	private ClassDetailService classDetailService;
 	
+	@Autowired
+	private SuperAdminService superAdminService;
+	
 	
 	// getList
 	@RequestMapping(value = { "class" }, method = RequestMethod.GET)
-	public String TableClass(ModelMap modelMap) {
+	public String TableClass(ModelMap modelMap, Authentication authentication) {
 		modelMap.put("gbclass", classService.findAll());
-		return "admin/table/class";
+		modelMap.put("status", -1);
+		modelMap.put("keyword", "");
+		modelMap.put("page", 1);
+		String username = authentication.getName();
+		Teacher teacher = teacherService.findTeacherByEmail(username);
+		if(teacher == null) {
+			Superadmin superadmin = superAdminService.findByUsernameAdmin(username);
+			if(superadmin.getRole().getId_role() == 1) {
+				modelMap.put("role", "superAdmin");
+				return "admin/table/class";
+			}else {
+				modelMap.put("role", "admin");
+				return "admin/table/class";
+			}
+		}else {
+			modelMap.put("role", "teacher");
+			modelMap.put("idTeacher", teacher.getId_teacher());
+		}
+	
+		return "redirect:/admin/classdetail";
 	}
 
 	// Add
@@ -99,14 +125,25 @@ public class AdClassController {
 	}
 	//EDIT
 	@RequestMapping(value = "editClass/{id_class}", method = RequestMethod.GET)
-	public String editClass(@PathVariable("id_class") int id_class, ModelMap modelMap,RedirectAttributes redirectAttributes) {
+	public String editClass(@PathVariable("id_class") int id_class, ModelMap modelMap,RedirectAttributes redirectAttributes,Authentication authentication) {
 		
 		modelMap.put("teachers", teacherService.findAll());
 		modelMap.put("schoolYears", schoolYearService.findAll());
 		modelMap.put("students", studentService.findAll());
 		modelMap.put("class", classService.findId(id_class));
 		modelMap.put("classdetails", classDetailService.findAll());
-		
+		String username = authentication.getName();
+		Teacher teacher = teacherService.findTeacherByEmail(username);
+		if(teacher == null) {
+			Superadmin superadmin = superAdminService.findByUsernameAdmin(username);
+			if(superadmin.getRole().getId_role() == 1) {
+				modelMap.put("role", "superAdmin");
+			}else {
+				modelMap.put("role", "admin");		
+			}
+		}else {
+			modelMap.put("role", "teacher");
+		}
 		return "admin/editForm/class";
 	}
 	
@@ -126,4 +163,27 @@ public class AdClassController {
 		}
 		return "redirect:/admin/class";
 	}
+	
+	// getList
+		@RequestMapping(value = { "selectClass" }, method = RequestMethod.GET)
+		public String selectClass(@RequestParam("status") int status,
+                @RequestParam("keyword") String keyword,ModelMap modelMap,Authentication authentication) {
+			String username = authentication.getName();
+			Teacher teacher = teacherService.findTeacherByEmail(username);
+			if(teacher == null) {
+				Superadmin superadmin = superAdminService.findByUsernameAdmin(username);
+				if(superadmin.getRole().getId_role() == 1) {
+					modelMap.put("role", "superAdmin");
+				}else {
+					modelMap.put("role", "admin");
+				}
+			}else {
+				modelMap.put("role", "teacher");
+				modelMap.put("idTeacher", teacher.getId_teacher());
+			}
+			modelMap.put("gbclass", classService.findAll());
+			modelMap.put("status", status);
+			modelMap.put("keyword", keyword);
+			return "admin/table/class";
+		}
 }

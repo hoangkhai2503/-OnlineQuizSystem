@@ -3,6 +3,7 @@ package com.manager.controllers.admin;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.manager.entities.ClassDetail;
+import com.manager.entities.Superadmin;
 import com.manager.entities.Teacher;
 import com.manager.entities._Class;
 import com.manager.service.ClassDetailService;
@@ -34,7 +36,12 @@ public class AdClassDetailController {
 	private EnumListService enumListService;
 	// getList
 	@RequestMapping(value = { "classdetail" }, method = RequestMethod.GET)
-	public String TableClassDetail(ModelMap modelMap) {
+	public String TableClassDetail(ModelMap modelMap,Authentication authentication) {
+		String username = authentication.getName();
+		Teacher teacher = teacherService.findTeacherByEmail(username);
+		
+		modelMap.put("idTeacher", teacher.getId_teacher());
+		
 		modelMap.put("classdetails", classDetailService.findAll());
 		return "admin/table/classdetail";
 	}

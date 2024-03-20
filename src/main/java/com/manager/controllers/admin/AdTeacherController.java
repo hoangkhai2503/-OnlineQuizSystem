@@ -3,6 +3,7 @@ package com.manager.controllers.admin;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.manager.entities.Contact;
+import com.manager.entities.Superadmin;
 import com.manager.entities.Teacher;
 import com.manager.service.EnumListService;
 import com.manager.service.RoleService;
+import com.manager.service.SuperAdminService;
 import com.manager.service.TeacherService;
 
 @Controller
@@ -27,6 +30,13 @@ public class AdTeacherController {
 	
 	@Autowired
 	private RoleService roleService;
+	
+	@Autowired
+	private SuperAdminService superAdminService;
+	
+	 @Autowired 
+	 private BCryptPasswordEncoder encoder;
+	
 	// getList
 	@RequestMapping(value = { "teacher" }, method = RequestMethod.GET)
 	public String TableTeacher(ModelMap modelMap) {
@@ -54,6 +64,18 @@ public class AdTeacherController {
 		teacher.setEnumlist(enumListService.findById(4));
 		teacher.setRole(roleService.findById(2));
 		teacherService.save(teacher);
+		
+		Superadmin superadmin = new Superadmin();
+		superadmin.setEnumlist(enumListService.find(4));
+		superadmin.setUsername_superadmin(teacher.getEmail_teacher());
+		superadmin.setPassword_superadmin(teacher.getPassword_teacher());
+		superadmin.setRole(roleService.findById(3));
+		
+		superadmin.setPassword_superadmin(encoder.encode(superadmin.getPassword_superadmin()));
+		superAdminService.save(superadmin);
+			
+		
+	
 		return "redirect:teacher";
 	}
 	

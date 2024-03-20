@@ -50,5 +50,10 @@ public class TeacherServiceImpl implements TeacherService{
 		// TODO Auto-generated method stub
 		return teacherRepository.findAllTeacherInactive();
 	}
+	@Override
+	public Teacher findTeacherByEmail(String email_teacher) {
+		// TODO Auto-generated method stub
+		return teacherRepository.findTeacherByEmail(email_teacher);
+	}
 
 }
